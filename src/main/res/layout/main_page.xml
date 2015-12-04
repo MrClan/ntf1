@@ -1,0 +1,22 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".MainActivity"
+    android:background="#ff444444">
+
+    <ImageButton
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/btnWallpaper"
+        android:background="@drawable/wallpaper_01"
+        android:onClick="onClick"/>
+
+    <ImageView
+        android:layout_width="260dp"
+        android:layout_height="80dp"
+        android:id="@+id/imageView5"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/wallpaper_title" />
+
+</RelativeLayout>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minHeight="25px"
+    android:minWidth="25px"
+    android:orientation="vertical"
+    android:padding="5dp"
+    android:weightSum="1">
+
+    <ImageView
+        android:id="@+id/imgEventPic"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_weight="17.20"
+        android:background="@drawable/event_pic_03" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="25px"
+        android:minWidth="25px"
+        android:orientation="horizontal"
+        android:layout_alignBottom="@+id/imgEventPic"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="#b1000000">
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="25px"
+            android:minWidth="25px"
+            android:orientation="vertical"
+            android:layout_weight="90">
+            <TextView
+                android:id="@+id/lblEventTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:text="Rafting Mela &apos;72"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#ffffff" />
+            <TextView
+                android:id="@+id/lblEventHost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:text="Global Travels"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="10sp"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:id="@+id/lblEventVenueNTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:text="Venue: Trisuli khola  |  2pm onwards"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="10sp"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:id="@+id/lblEventCost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:text="Cost: Rs. 34,000/-"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="10sp"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="10">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/imageView7"
+                    android:background="@drawable/event_add_to_fav"
+                    android:layout_alignTop="@+id/imgEventPic"
+                    android:layout_alignRight="@+id/imgEventPic"
+                    android:layout_alignEnd="@+id/imgEventPic"
+                    android:layout_gravity="center" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="40dp"
+        android:id="@+id/imageView6"
+        android:background="@drawable/event_bookmarked"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="27dp"
+        android:layout_marginStart="27dp" />
+
+</RelativeLayout>

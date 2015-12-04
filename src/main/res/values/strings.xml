@@ -1,8 +1,24 @@
 <resources>
-    <string name="app_name">NTCore</string>
+    <string name="app_name">neptripdefault</string>
+
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <string name="action_example">Example action</string>
+
     <string name="action_settings">Settings</string>
+    <string name="welcome">Welcome to Neptrip!</string>
+    <string name="english">English</string>
+    <string name="language">Language</string>
+    <string name="nepali">Nepali</string>
+    <string name="apple_en">Apple</string>
+    <string name="apple_np">स्याउ </string>
+    <string name="mango_en">Mango</string>
+    <string name="mango_np">आँप </string>
+    <string name="banana_en">Banana</string>
+    <string name="banana_np">केरा </string>
 </resources>

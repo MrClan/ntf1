@@ -9,14 +9,27 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".MainPage"
+            android:label="NepTrip"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity">
+        </activity>
+        <activity android:name=".FeaturedActivity"
+            android:label="FeaturedActivityView"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".EventDetailActivity"
+            android:label="EventDetailActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".HomePage"
+            android:label="Home Page"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 

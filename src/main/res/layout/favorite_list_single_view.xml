@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minHeight="25px"
+    android:minWidth="25px"
+    android:orientation="vertical"
+    android:weightSum="1"
+    android:padding="5dp">
+
+    <ImageView
+        android:id="@+id/imgEventPic"
+        android:layout_width="match_parent"
+        android:layout_height="131dp"
+        android:layout_weight="17.20"
+        android:background="@drawable/featured_02" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="110dp"
+        android:layout_height="131dp"
+        android:background="@drawable/featured_overlay_mountaineering"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_weight="50"
+        android:alpha="50" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imgEventPic"
+        android:layout_toRightOf="@+id/imageView3"
+        android:layout_toEndOf="@+id/imageView3"
+        android:layout_marginBottom="10dp"
+        android:paddingLeft="3dp">
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:id="@+id/imageView4"
+            android:background="@drawable/profile_pic"
+            android:layout_gravity="center" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="2dp">
+
+            <TextView
+                android:id="@+id/lblEventTitle"
+                android:layout_width="279dp"
+                android:layout_height="wrap_content"
+                android:text="Rafting Mela &apos;72"
+                android:textSize="12sp"
+                android:layout_alignBottom="@+id/imgEventPic"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_toRightOf="@+id/imageView3"
+                android:layout_toEndOf="@+id/imageView3"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:padding="0dp"
+                android:layout_margin="0dp"
+                android:layout_weight="30" />
+
+            <TextView
+                android:id="@+id/lblEventVenueNTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Venue: Trisuli khola  |  2pm onwards"
+                android:textSize="9sp"
+                android:layout_below="@+id/lblEventHost"
+                android:layout_toRightOf="@+id/imageView3"
+                android:layout_toEndOf="@+id/imageView3"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:layout_margin="0dp"
+                android:layout_weight="60" />
+
+            <TextView
+                android:id="@+id/lblEventCost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cost: Rs. 34,000/-"
+                android:textSize="9sp"
+                android:layout_below="@+id/lblEventVenueNTime"
+                android:layout_toRightOf="@+id/imageView3"
+                android:layout_toEndOf="@+id/imageView3"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:layout_weight="10" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

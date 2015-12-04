@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/eventFeatured"
+            android:icon="@drawable/icon_featured"
+            android:title="Featured Events" />
+        <item
+            android:id="@+id/eventAdventure"
+            android:icon="@drawable/icon_adventure"
+            android:title="Adventure" />
+        <item
+            android:id="@+id/eventCausal"
+            android:icon="@drawable/icon_casual"
+            android:title="Casual" />
+        <item
+            android:id="@+id/eventRomantic"
+            android:icon="@drawable/icon_romantictrip"
+            android:title="Romantic" />
+        <item
+            android:id="@+id/eventHiking"
+            android:icon="@drawable/icon_hiking"
+            android:title="Hiking" />
+        <item
+            android:id="@+id/eventMountaineering"
+            android:icon="@drawable/icon_mountaining"
+            android:title="Mountaineering" />
+        <item
+            android:id="@+id/eventExploring"
+            android:icon="@drawable/icon_exploring"
+            android:title="Exploring" />
+    </group>
+    <item android:title="Personalize">
+        <menu>
+            <item
+                android:id="@+id/nav_setting"
+                android:icon="@drawable/ic_action_settings"
+                android:title="Settings" />
+            <item
+                android:id="@+id/nav_login"
+                android:icon="@drawable/icon_login"
+                android:title="Login" />
+        </menu>
+    </item>
+
+
+</menu>
