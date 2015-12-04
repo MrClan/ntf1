@@ -11,6 +11,10 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import com.apptivators.ntcore.Utils.F;
+import com.apptivators.ntcore.Utils.U;
+import com.firebase.client.Firebase;
+
 
 public class MainPage extends AppCompatActivity {
 
@@ -20,14 +24,24 @@ public class MainPage extends AppCompatActivity {
         setContentView(R.layout.main_page);
         getSupportActionBar().hide();
 
-        //Initializing
+        U.Intialize(this);
+
         ImageButton btnWallpaper = (ImageButton) findViewById(R.id.btnWallpaper);
     }
 
     public void onClick(View v)
     {
-        Intent i = new Intent(this,HomePage.class);
-        startActivity(i);
+        // if user already setup never comeback to this view
+        // if user not already setup, prompt the user to setup their basic profile
+        if(U.CheckUserStatus()) {
+            U.GoToHome();
+            finish();
+        }
+
+        else {
+            U.GoToProfileSetup();
+            finish();
+        }
     }
 
     @Override

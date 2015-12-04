@@ -12,6 +12,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.apptivators.ntcore.Utils.U;
+
 /**
  * Created on 12/4/2015
  * By : $(USER)<suchan211@gmail.com>
@@ -91,143 +93,63 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
     public boolean onNavigationItemSelected(MenuItem item)
     {
         int id = item.getItemId();
+        Fragment fragment = null;
+        String title = null;
         if (id == R.id.eventFeatured)
         {
-            // Create a new fragment and specify the planet to show based on position
-            Fragment fragment = new EventsActivity();
-            Bundle args = new Bundle();
-            args.putString("title", "Featured Events");
-            fragment.setArguments(args);
-
-            // Insert the fragment by replacing any existing fragment
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.frameLayout, fragment)
-                    .commit();
-
-            // Highlight the selected item, update the title, and close the drawer
-            Toast.makeText(HomePage.this, "Fragment Events Selected", Toast.LENGTH_SHORT).show();
+            fragment = new EventsActivity();
+            title = "Featured Events";
         }
         else if (id == R.id.eventAdventure)
         {
-            // Create a new fragment and specify the planet to show based on position
-            Fragment fragment = new EventsActivity();
-            Bundle args = new Bundle();
-            args.putString("title", "Adventure Events");
-            fragment.setArguments(args);
-
-            // Insert the fragment by replacing any existing fragment
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.frameLayout, fragment)
-                    .commit();
-
-            // Highlight the selected item, update the title, and close the drawer
-            Toast.makeText(HomePage.this, "Adventure Events Selected", Toast.LENGTH_SHORT).show();
+            fragment = new EventsActivity();
+            title= "Adventure Events";
         }
         else if (id == R.id.eventCausal)
         {
-            // Create a new fragment and specify the planet to show based on position
-            Fragment fragment = new EventsActivity();
-            Bundle args = new Bundle();
-            args.putString("title", "Casual Events");
-            fragment.setArguments(args);
-
-            // Insert the fragment by replacing any existing fragment
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.frameLayout, fragment)
-                    .commit();
-            Toast.makeText(HomePage.this, "Featured Events Selected", Toast.LENGTH_SHORT).show();
+            fragment = new EventsActivity();
+            title= "Casual Events";
         }
         else if (id == R.id.eventExploring)
         {
-            // Create a new fragment and specify the planet to show based on position
-            Fragment fragment = new EventsActivity();
-            Bundle args = new Bundle();
-            args.putString("title", "Exploring Events");
-            fragment.setArguments(args);
-
-            // Insert the fragment by replacing any existing fragment
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.frameLayout, fragment)
-                    .commit();
-            Toast.makeText(HomePage.this, "Exploring Events Selected", Toast.LENGTH_SHORT).show();
+            fragment = new EventsActivity();
+            title="Exploring Events";
         }
         else if (id == R.id.eventHiking)
         {
-            // Create a new fragment and specify the planet to show based on position
-            Fragment fragment = new EventsActivity();
-            Bundle args = new Bundle();
-            args.putString("title", "Hiking Events");
-            fragment.setArguments(args);
-
-            // Insert the fragment by replacing any existing fragment
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.frameLayout, fragment)
-                    .commit();
-            Toast.makeText(HomePage.this, "Hiking Events Selected", Toast.LENGTH_SHORT).show();
+            fragment = new EventsActivity();
+            title="Hiking Events";
         }
         else if (id == R.id.eventMountaineering)
         {
-            // Create a new fragment and specify the planet to show based on position
-            Fragment fragment = new EventsActivity();
+            fragment = new EventsActivity();
             Bundle args = new Bundle();
             args.putString("title", "Mountaineering Events");
-            fragment.setArguments(args);
-
-            // Insert the fragment by replacing any existing fragment
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.frameLayout, fragment)
-                    .commit();
-            Toast.makeText(HomePage.this, "Mountaineering Events Selected", Toast.LENGTH_SHORT).show();
         }
         else if (id == R.id.eventRomantic)
         {
-            // Create a new fragment and specify the planet to show based on position
-            Fragment fragment = new EventsActivity();
-            Bundle args = new Bundle();
-            args.putString("title", "Romantic Events");
-            fragment.setArguments(args);
-
-            // Insert the fragment by replacing any existing fragment
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.frameLayout, fragment)
-                    .commit();
-            Toast.makeText(HomePage.this, "Romantic Events Selected", Toast.LENGTH_SHORT).show();
+            fragment = new EventsActivity();
+            title = "Romantic Events";
         }
         else if (id == R.id.nav_setting)
         {
-            // Create a new fragment and specify the planet to show based on position
-            Fragment fragment = new Preferences();
-            Bundle args = new Bundle();
-            fragment.setArguments(args);
-
-            // Insert the fragment by replacing any existing fragment
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.frameLayout, fragment)
-                    .commit();
-            Toast.makeText(HomePage.this, "Setting Selected", Toast.LENGTH_SHORT).show();
+            fragment = new Preferences();
         }
         else if (id == R.id.nav_login)
         {
-            // Create a new fragment and specify the planet to show based on position
-            Fragment fragment = new LoginPage();
-            Bundle args = new Bundle();
-            fragment.setArguments(args);
-
-            // Insert the fragment by replacing any existing fragment
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.frameLayout, fragment)
-                    .commit();
-            Toast.makeText(HomePage.this, "Login Selected", Toast.LENGTH_SHORT).show();
+            fragment = new LoginPage();
         }
+
+        Bundle args = new Bundle();
+        fragment.setArguments(args);
+        args.putString("title",title);
+
+        // Insert the fragment by replacing any existing fragment
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.frameLayout, fragment)
+                .commit();
+        U.ShowToast(title);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

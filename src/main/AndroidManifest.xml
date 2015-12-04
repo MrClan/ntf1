@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.apptivators.ntcore">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,23 +16,28 @@
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
-        </activity>
-        <activity android:name=".FeaturedActivity"
+        <activity android:name=".MainActivity"></activity>
+        <activity
+            android:name=".FeaturedActivity"
             android:label="FeaturedActivityView"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".EventDetailActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".EventDetailActivity"
             android:label="EventDetailActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".HomePage"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".HomePage"
             android:label="Home Page"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".UsersetupActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_usersetup"
+            android:theme="@style/FullscreenTheme"></activity>
     </application>
 
 </manifest>

@@ -21,4 +21,10 @@
     <string name="mango_np">आँप </string>
     <string name="banana_en">Banana</string>
     <string name="banana_np">केरा </string>
+
+    <string name="title_activity_usersetup">NepTrip - Profile Setup</string>
+    <string name="user_setup_button">Get Started</string>
+    <string name="user_setup_content">Pick a username:</string>
+    <string name="profile_setup">Profile Setup</string>
+    <string name="prompt_username">Pick a username</string>
 </resources>

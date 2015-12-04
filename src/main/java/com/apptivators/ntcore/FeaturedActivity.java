@@ -12,6 +12,11 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.apptivators.ntcore.Models.Trip;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by suchan on 11/25/2015.
  */
@@ -28,7 +33,9 @@ public class FeaturedActivity extends ActionBarActivity
 
         //toolbar = (Toolbar) findViewById(R.id.toolbar);
 
-        String[] events = {"Trisuli Rafting","Rafting mela","White water Rafting","Sunshine Rafting","Raft Nepal 2015","Canoning","Global Rafting","Rafting for a cause","Keep Rafting","Raft Today"};
+        //String[] events = {"Trisuli Rafting","Rafting mela","White water Rafting","Sunshine Rafting","Raft Nepal 2015","Canoning","Global Rafting","Rafting for a cause","Keep Rafting","Raft Today"};
+
+        List<Trip> events = new ArrayList<>();
 
         ListAdapter listAdp = new CustomAdapter(this, events, R.layout.favorite_list_single_view);
         ListView listViewNew = (ListView) findViewById(R.id.listViewFood);

@@ -1,0 +1,87 @@
+package com.apptivators.ntcore.Utils;
+
+import android.app.Activity;
+import android.content.Context;
+import android.view.View;
+import android.widget.AutoCompleteTextView;
+
+import com.apptivators.ntcore.Models.Trip;
+import com.apptivators.ntcore.Models.TripType;
+import com.apptivators.ntcore.Models.User;
+import com.apptivators.ntcore.UsersetupActivity;
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+/**
+ * Created by Pratik on 12/4/2015.
+ * Firebase related codes goes here
+ */
+public class F {
+
+    public final static String rootNode = "https://neptrip.firebaseio.com/v1";
+    public final static String usersNode = "/users";
+    public final static String eventsRefNode = "/events";
+
+
+    public static boolean CheckIfUserExists(final String username, final View view, final AutoCompleteTextView autoCompleteTextView) {
+        U.ShowToast("Checking for existing user with " + username);
+        final Firebase searchUserNodeRef = new Firebase(rootNode + usersNode + "/" + username.toLowerCase());
+        searchUserNodeRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.getValue() == null) // unique username, hence proceed to user creation
+                {
+                    U.ShowToast("Registering new user...");
+                    //final Firebase userNodeRef = new Firebase(rootNode + usersNode);
+                    //Firebase newUserRef = userNodeRef.push();
+                    User u = new User(username.toLowerCase(), "", "");
+                    searchUserNodeRef.setValue(u);
+                    U.SetLocalUser(u);
+                } else {
+                    U.ShowAlert(username + " already exists. Please pick a different one.");
+                    U.ShowProgress(true, view);
+                    autoCompleteTextView.setError("Username already taken");
+                    autoCompleteTextView.requestFocus();
+                }
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+        return false;
+    }
+
+    public static void GetTrips(TripType tripType) {
+
+
+    }
+
+    public static void AddTrips() {
+        /*String title, String vendor, String startPoint, String endPoint, String venue, String cost, String startTime, String endTime, String imgName, String noOfAttendees, String category, String description*/
+        List<Trip> trips = new ArrayList<Trip>(Arrays.asList(
+                new Trip("Tilicho Trip", "Global Travels", "Lazimpat", "Dhulikhel", "Nagarkot", 5700, "9th Dec", "9th Dec", "http://res.cloudinary.com/pratik/image/upload/v1449251052/8_lh6vci.jpg", "Any", "Mountaineering", "Explore the uncharted terrains of Nepal. Places never been walked before. Experience most pristine form of nature."),
+                new Trip("All Nepal Tour", "MyNepal Travels", "Lazimpat", "Dhulikhel", "Nagarkot", 84000, "9th Dec", "9th Dec", "http://res.cloudinary.com/pratik/image/upload/v1449251052/7_zo8gz2.jpg", "Any", "Mountaineering", "Explore the uncharted terrains of Nepal. Places never been walked before. Experience most pristine form of nature."),
+                new Trip("Sky diving", "Whatever Travels", "Lazimpat", "Dhulikhel", "Nagarkot", 400000, "9th Dec", "9th Dec", "http://res.cloudinary.com/pratik/image/upload/v1449251051/6_agm1as.jpg", "Any", "Mountaineering", "Explore the uncharted terrains of Nepal. Places never been walked before. Experience most pristine form of nature."),
+                new Trip("Bungy @ Last Resort", "Tatopani Travels", "Thamel", "Dhulikhel", "Nagarkot", 7200, "9th Dec", "9th Dec", "http://res.cloudinary.com/pratik/image/upload/v1449251050/5_eve2ua.jpg", "Any", "Mountaineering", "Explore the uncharted terrains of Nepal. Places never been walked before. Experience most pristine form of nature."),
+                new Trip("Tilicho Trip", "New Travels", "Lazimpat", "Dhulikhel", "Nagarkot", 15000, "9th Dec", "9th Dec", "http://res.cloudinary.com/pratik/image/upload/v1449251051/4_n5ekjl.jpg", "Any", "Mountaineering", "Explore the uncharted terrains of Nepal. Places never been walked before. Experience most pristine form of nature."),
+                new Trip("Water Touch Bungy", "Bungy Travels", "Lazimpat", "Dhulikhel", "Nagarkot", 27000, "9th Dec", "9th Dec", "http://res.cloudinary.com/pratik/image/upload/v1449251053/3_rlsxwg.jpg", "Any", "Mountaineering", "Explore the uncharted terrains of Nepal. Places never been walked before. Experience most pristine form of nature."),
+                new Trip("Paragliding Trip", "Pokhara Travels", "Lazimpat", "Dhulikhel", "Nagarkot", 57000, "9th Dec", "9th Dec", "http://res.cloudinary.com/pratik/image/upload/v1449251051/2_lje2gy.jpg", "Any", "Mountaineering", "Explore the uncharted terrains of Nepal. Places never been walked before. Experience most pristine form of nature."),
+                new Trip("Temple Trip", "Religious Travels", "Lazimpat", "Dhulikhel", "Nagarkot", 75000, "9th Dec", "9th Dec", "http://res.cloudinary.com/pratik/image/upload/v1449251050/1_ruhlxe.jpg", "Any", "Mountaineering", "Explore the uncharted terrains of Nepal. Places never been walked before. Experience most pristine form of nature.")
+
+        ));
+
+        Firebase eventsRef = new Firebase(rootNode + eventsRefNode);
+
+        for (Trip t : trips) {
+            eventsRef.push().setValue(t);
+        }
+    }
+}
