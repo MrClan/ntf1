@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.apptivators.ntcore.Models.Trip;
@@ -27,6 +28,7 @@ import java.util.List;
 public class EventsActivity  extends Fragment
 {
     ListView listView;
+    ProgressBar progressBar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -64,10 +66,10 @@ public class EventsActivity  extends Fragment
 
 */
 
+        //TODO: TAKES ABOUT 3-4 SECONDS, SO A PROGRESSBAR OR PROGRESSDIALOG WOULD BE NICE HERE
 
 
         // Fetch data from firebase and populate the listview
-
         Firebase eventsRef = new Firebase(F.rootNode + F.eventsRefNode);
         eventsRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -89,11 +91,6 @@ public class EventsActivity  extends Fragment
             }
         });
 
-
-
-
-
-
         listView.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
                     @Override
@@ -101,6 +98,9 @@ public class EventsActivity  extends Fragment
                         Trip curItem =  (Trip)(parent.getItemAtPosition(position));
                         Toast.makeText(getActivity(), curItem.getTitle(), Toast.LENGTH_LONG).show();
                         Intent i = new Intent(getActivity(), EventDetailActivity.class);
+                        Bundle b = new Bundle();
+                        b.putSerializable("curTrip",curItem);
+                        i.putExtras(b);
                         startActivity(i);
                     }
                 }

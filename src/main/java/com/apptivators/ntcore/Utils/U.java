@@ -9,12 +9,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.apptivators.ntcore.HomePage;
 import com.apptivators.ntcore.MainPage;
 import com.apptivators.ntcore.Models.User;
 import com.apptivators.ntcore.UsersetupActivity;
+import com.bumptech.glide.Glide;
 import com.firebase.client.Firebase;
 
 /**
@@ -79,6 +81,14 @@ public class U {
         SharedPreferences.Editor userKeyEditor = preferences.edit();
         userKeyEditor.putString(userNameKey, user.getUsername());
         userKeyEditor.apply();
+    }
+
+    public static void LoadImage(Context ctx, ImageView iv, String imgUrl)
+    {
+        Glide.with(ctx)
+                .load(imgUrl)
+                .centerCrop()
+                .into(iv);
     }
 
 

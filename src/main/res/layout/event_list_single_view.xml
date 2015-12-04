@@ -13,7 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_weight="17.20"
-        android:background="@drawable/event_pic_03" />
+        android:background="@drawable/event_pic_03"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"/>
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -89,7 +91,7 @@
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:id="@+id/imageView7"
+                    android:id="@+id/ivInterested"
                     android:background="@drawable/event_add_to_fav"
                     android:layout_alignTop="@+id/imgEventPic"
                     android:layout_alignRight="@+id/imgEventPic"

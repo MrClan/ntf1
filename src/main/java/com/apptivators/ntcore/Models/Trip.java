@@ -1,9 +1,11 @@
 package com.apptivators.ntcore.Models;
 
+import java.io.Serializable;
+
 /**
  * Created by Pratik on 12/4/2015.
  */
-public class Trip {
+public class Trip implements Serializable{
     String title;
     String vendor;
     String startPoint;
@@ -16,6 +18,7 @@ public class Trip {
     String noOfAttendees;
     String category;
     String description;
+    int attendees;
     public String ID;
 
 
@@ -33,6 +36,16 @@ public class Trip {
         this.noOfAttendees = noOfAttendees;
         this.category = category;
         this.description = description;
+    }
+
+    public int getAttendees()
+    {
+        return attendees;
+    }
+
+    public void setAttendees(int attendees)
+    {
+        this.attendees = attendees;
     }
 
     public String getTitle() {

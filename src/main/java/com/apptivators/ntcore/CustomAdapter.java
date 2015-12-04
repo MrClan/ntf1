@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.apptivators.ntcore.Models.Trip;
+import com.apptivators.ntcore.Utils.U;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
@@ -35,9 +36,7 @@ public class CustomAdapter extends ArrayAdapter<Trip>
         TextView eventTitleView = (TextView) customView.findViewById(R.id.lblEventTitle);
         ImageView eventImage = (ImageView) customView.findViewById(R.id.imgEventPic);
 
-        Glide.with(this.getContext())
-                .load(event.getImgName())
-                .into(eventImage);
+        U.LoadImage(this.getContext(), eventImage, event.getImgName());
 
         eventTitleView.setText(event.getTitle());
         //eventImage.setImageResource(R.drawable.event_pic);
