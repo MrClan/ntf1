@@ -2,9 +2,11 @@ package com.apptivators.ntcore.Utils;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 
+import com.apptivators.ntcore.HomePage;
 import com.apptivators.ntcore.Models.Trip;
 import com.apptivators.ntcore.Models.TripType;
 import com.apptivators.ntcore.Models.User;
@@ -29,25 +31,47 @@ public class F {
     public final static String eventsRefNode = "/events";
 
 
-    public static boolean CheckIfUserExists(final String username, final View view, final AutoCompleteTextView autoCompleteTextView) {
-        U.ShowToast("Checking for existing user with " + username);
+    public static boolean CheckIfUserExists(final String username, final View view, final AutoCompleteTextView autoCompleteTextView, final Context c, final boolean loginIfUserExists) {
+        U.ShowToast("Checking for user: " + username);
         final Firebase searchUserNodeRef = new Firebase(rootNode + usersNode + "/" + username.toLowerCase());
         searchUserNodeRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.getValue() == null) // unique username, hence proceed to user creation
-                {
-                    U.ShowToast("Registering new user...");
-                    //final Firebase userNodeRef = new Firebase(rootNode + usersNode);
-                    //Firebase newUserRef = userNodeRef.push();
-                    User u = new User(username.toLowerCase(), "", "");
-                    searchUserNodeRef.setValue(u);
-                    U.SetLocalUser(u);
+                if (loginIfUserExists) {
+                    if (dataSnapshot.getValue() != null) // unique username, hence proceed to user creation
+                    {
+                        U.ShowToast("Logging in as " + username);
+                        //final Firebase userNodeRef = new Firebase(rootNode + usersNode);
+                        //Firebase newUserRef = userNodeRef.push();
+                        User u = dataSnapshot.getValue(User.class); // Read the user, and set it's username to the localUserDatabase
+                        U.SetLocalUser(u);
+                        Intent i = new Intent(c, HomePage.class);
+                        c.startActivity(i);
+                        ((Activity)c).finish();
+                    } else {
+                        U.ShowAlert("No user with username: " + username + " found. How about signing up as new user ?");
+                        U.ShowProgress(true, view);
+                        autoCompleteTextView.setError("Username not found");
+                        autoCompleteTextView.requestFocus();
+                    }
                 } else {
-                    U.ShowAlert(username + " already exists. Please pick a different one.");
-                    U.ShowProgress(true, view);
-                    autoCompleteTextView.setError("Username already taken");
-                    autoCompleteTextView.requestFocus();
+                    if (dataSnapshot.getValue() == null) // unique username, hence proceed to user creation
+                    {
+                        U.ShowToast("Registering new user...");
+                        //final Firebase userNodeRef = new Firebase(rootNode + usersNode);
+                        //Firebase newUserRef = userNodeRef.push();
+                        User u = new User(username.toLowerCase(), "", "");
+                        searchUserNodeRef.setValue(u);
+                        U.SetLocalUser(u);
+                        Intent i = new Intent(c, HomePage.class);
+                        c.startActivity(i);
+                        ((Activity)c).finish();
+                    } else {
+                        U.ShowAlert("A user with username: " + username + " already exists. Please pick a different one.");
+                        U.ShowProgress(true, view);
+                        autoCompleteTextView.setError("Username already taken");
+                        autoCompleteTextView.requestFocus();
+                    }
                 }
             }
 

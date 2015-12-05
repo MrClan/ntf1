@@ -124,4 +124,11 @@ public class U {
             view.setVisibility(show ? View.GONE : View.VISIBLE);
         }
     }
+
+    public static void ClearLocalUser() {
+        SharedPreferences preferences = c.getSharedPreferences(settingsFileName, c.MODE_PRIVATE);
+        SharedPreferences.Editor userKeyEditor = preferences.edit();
+        userKeyEditor.putString(userNameKey, "");
+        userKeyEditor.apply();
+    }
 }

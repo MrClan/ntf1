@@ -1,16 +1,11 @@
 package com.apptivators.ntcore;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
-import android.os.Build;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 
@@ -24,7 +19,7 @@ import com.apptivators.ntcore.Utils.U;
 public class UsersetupActivity extends AppCompatActivity {
 
 
-    AutoCompleteTextView autoCompleteTextView;
+    AutoCompleteTextView autoCompleteNewUserTv;
 
 
     @Override
@@ -36,7 +31,7 @@ public class UsersetupActivity extends AppCompatActivity {
         mVisible = true;
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
-        autoCompleteTextView = (AutoCompleteTextView)findViewById(R.id.username);
+        autoCompleteNewUserTv = (AutoCompleteTextView)findViewById(R.id.username);
 
 
         // Set up the user interaction to manually show or hide the system UI.
@@ -56,21 +51,23 @@ public class UsersetupActivity extends AppCompatActivity {
 
     public void OnClick(View view)
     {
-        String username = autoCompleteTextView.getText().toString();
+        String username = autoCompleteNewUserTv.getText().toString();
         if(TextUtils.isEmpty(username))
         {
-            autoCompleteTextView.setError("Username cannot be empty");
-            autoCompleteTextView.requestFocus();
-            return;
+            autoCompleteNewUserTv.setError("Username cannot be empty");
+            autoCompleteNewUserTv.requestFocus();
         }
         else {
-            F.CheckIfUserExists(username, mControlsView, autoCompleteTextView);
-            U.ShowProgress(false, mControlsView);
+            switch (view.getId()) {
+                case R.id.dummy_button:
+                    F.CheckIfUserExists(username, mControlsView, autoCompleteNewUserTv, this, false);
+                    break;
+                case R.id.btnLogin:
+                    F.CheckIfUserExists(username, mControlsView, autoCompleteNewUserTv, this, true);
+                    break;
+            }
         }
     }
-
-
-
 
     /**
      * Touch listener to use for in-layout UI controls to delay hiding the

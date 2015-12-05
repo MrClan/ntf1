@@ -1,5 +1,8 @@
 package com.apptivators.ntcore;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.design.widget.NavigationView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.apptivators.ntcore.Utils.U;
@@ -18,12 +22,13 @@ import com.apptivators.ntcore.Utils.U;
  * Created on 12/4/2015
  * By : $(USER)<suchan211@gmail.com>
  */
-public class HomePage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
-{
+public class HomePage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    TextView txtNavHeaderWelcome;
+    MenuItem nav_login;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_page);
 
@@ -35,6 +40,10 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        String username = U.GetLocalUser();
+        txtNavHeaderWelcome = (TextView) findViewById(R.id.txtNavHeaderWelcome);
+        txtNavHeaderWelcome.setText(txtNavHeaderWelcome.getText() + " @ " + username);
 
 
         //POPULATE THE FIRST PAGE AS FEATURED PAGE
@@ -51,22 +60,17 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
     }
 
     @Override
-    public void onBackPressed()
-    {
-        DrawerLayout drawer = (DrawerLayout)findViewById(R.id.drawer_layout);
-        if(drawer.isDrawerOpen(GravityCompat.START))
-        {
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        }
-        else
-        {
+        } else {
             super.onBackPressed();
         }
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
+    public boolean onCreateOptionsMenu(Menu menu) {
         //getMenuInflater().inflate(R.menu.main,menu);
         return true;
     }
@@ -87,72 +91,77 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         return super.onOptionsItemSelected(item);
     }
 
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item)
-    {
+    public boolean onNavigationItemSelected(MenuItem item) {
+        boolean proceed = true;
         int id = item.getItemId();
         Fragment fragment = null;
         String title = null;
-        if (id == R.id.eventFeatured)
-        {
+        if (id == R.id.eventFeatured) {
             fragment = new EventsActivity();
             title = "Featured Events";
-        }
-        else if (id == R.id.eventAdventure)
-        {
+        } else if (id == R.id.eventAdventure) {
             fragment = new EventsActivity();
-            title= "Adventure Events";
-        }
-        else if (id == R.id.eventCausal)
-        {
+            title = "Adventure Events";
+        } else if (id == R.id.eventCausal) {
             fragment = new EventsActivity();
-            title= "Casual Events";
-        }
-        else if (id == R.id.eventExploring)
-        {
+            title = "Casual Events";
+        } else if (id == R.id.eventExploring) {
             fragment = new EventsActivity();
-            title="Exploring Events";
-        }
-        else if (id == R.id.eventHiking)
-        {
+            title = "Exploring Events";
+        } else if (id == R.id.eventHiking) {
             fragment = new EventsActivity();
-            title="Hiking Events";
-        }
-        else if (id == R.id.eventMountaineering)
-        {
+            title = "Hiking Events";
+        } else if (id == R.id.eventMountaineering) {
             fragment = new EventsActivity();
             Bundle args = new Bundle();
             args.putString("title", "Mountaineering Events");
-        }
-        else if (id == R.id.eventRomantic)
-        {
+        } else if (id == R.id.eventRomantic) {
             fragment = new EventsActivity();
             title = "Romantic Events";
-        }
-        else if (id == R.id.nav_setting)
-        {
+        } else if (id == R.id.nav_setting) {
             fragment = new Preferences();
+        } else if (id == R.id.nav_login) {
+            // Show an alert before logging out
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            alert.setMessage("Are you sure you want to logout of " + U.GetLocalUser() + "?");
+            alert.setCancelable(true);
+            alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // Clear local user value, and redirect to setup page
+                    U.ClearLocalUser();
+                    Intent i = new Intent(getBaseContext(), UsersetupActivity.class);
+                    startActivity(i);
+                    finish();
+                }
+            });
+            alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            });
+            alert.show();
+            proceed = false;
         }
-        else if (id == R.id.nav_login)
-        {
-            fragment = new LoginPage();
+
+        if (proceed) {
+            Bundle args = new Bundle();
+            fragment.setArguments(args);
+            args.putString("title", title);
+
+            // Insert the fragment by replacing any existing fragment
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.frameLayout, fragment)
+                    .commit();
+            U.ShowToast(title);
         }
-
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        args.putString("title",title);
-
-        // Insert the fragment by replacing any existing fragment
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, fragment)
-                .commit();
-        U.ShowToast(title);
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+
         return true;
     }
 }

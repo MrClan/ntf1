@@ -24,7 +24,10 @@
 
     <string name="title_activity_usersetup">NepTrip - Profile Setup</string>
     <string name="user_setup_button">Get Started</string>
+    <string name="user_login">Login as existing user</string>
+    <string name="user_signup">Signup as new user</string>
     <string name="user_setup_content">Pick a username:</string>
     <string name="profile_setup">Profile Setup</string>
-    <string name="prompt_username">Pick a username</string>
+    <string name="prompt_username">Pick a unique username</string>
+    <string name="prompt_usernameExisting">Type your username</string>
 </resources>

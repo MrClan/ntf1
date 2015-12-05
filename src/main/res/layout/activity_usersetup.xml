@@ -8,7 +8,7 @@
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
          TextureView, etc. -->
-    <TextView
+    <ImageView
         android:id="@+id/fullscreen_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -17,8 +17,9 @@
         android:text="@string/profile_setup"
         android:textColor="#33b5e5"
         android:textSize="50sp"
-        android:textStyle="bold" />
-
+        android:textStyle="bold"
+        android:scaleType="centerCrop"
+        android:src="@drawable/wallpaper"/>
 
 
     <!-- This FrameLayout insets its children based on system windows using
@@ -43,8 +44,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-
-
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -54,23 +53,40 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/prompt_username"
+                        android:imeOptions="actionDone"
                         android:inputType="text"
-                        android:maxLines="1"
                         android:maxLength="24"
-                        android:singleLine="true"
-                        android:imeOptions="actionDone"/>
+                        android:maxLines="1"
+                        android:singleLine="true" />
 
                 </android.support.design.widget.TextInputLayout>
 
 
-
-                <Button
-                    android:id="@+id/dummy_button"
-                    style="?metaButtonBarButtonStyle"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/user_setup_button"
-                    android:onClick="OnClick"/>
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <Button
+                        android:id="@+id/btnLogin"
+                        style="?metaButtonBarButtonStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="OnClick"
+                        android:text="@string/user_login"
+                        android:layout_weight="50"/>
+
+                    <Button
+                        android:id="@+id/dummy_button"
+                        style="?metaButtonBarButtonStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="OnClick"
+                        android:text="@string/user_signup"
+                        android:layout_weight="50"/>
+
+                </LinearLayout>
 
 
             </LinearLayout>
