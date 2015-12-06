@@ -78,6 +78,12 @@ public class SquareImageAdapter extends BaseAdapter {
                     R.drawable.img_menu_transportation_rickshaw,
                     R.drawable.img_menu_transportation_taxi,
                     R.drawable.img_menu_transportation_tempo,
-                    R.drawable.img_menu_transportation_walking
+                    R.drawable.img_menu_transportation_walking,
+                    R.drawable.img_menu_acomodation_fivestarhotel,
+                    R.drawable.img_menu_acomodation_premiumhotel,
+                    R.drawable.img_menu_acomodation_budgethotel,
+                    R.drawable.img_menu_acomodation_homestay,
+                    R.drawable.img_menu_acomodation_villa,
+                    R.drawable.img_menu_acomodation_motel
             };
 }

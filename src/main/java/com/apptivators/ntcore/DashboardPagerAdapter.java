@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import com.astuetz.PagerSlidingTabStrip;
 
+import layout.FragAccomodation;
 import layout.FragDestination;
 import layout.FragTransportation;
 
@@ -30,7 +31,7 @@ public class DashboardPagerAdapter extends FragmentPagerAdapter  {
         else if (position == 1)
             return FragTransportation.newInstance(null);
         else if (position == 2)
-            return eventDetailMap_Fragment.newInstance(position + 1);
+            return FragAccomodation.newInstance(null);
         else if (position == 3)
             return eventDetailCalendar_Fragment.newInstance(position + 1);
         if (position == 4)
