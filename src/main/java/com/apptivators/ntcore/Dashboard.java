@@ -3,7 +3,6 @@ package com.apptivators.ntcore;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
 import com.apptivators.ntcore.Utils.U;
 import com.astuetz.PagerSlidingTabStrip;
 
@@ -26,8 +25,5 @@ public class Dashboard extends AppCompatActivity {
         tabsStrip.setShouldExpand(true);
         tabsStrip.setViewPager(viewPager);
         tabsStrip.setShouldExpand(false);
-
-
-
     }
 }

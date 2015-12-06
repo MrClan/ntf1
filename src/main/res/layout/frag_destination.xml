@@ -4,13 +4,19 @@
     android:layout_height="match_parent"
     tools:context="layout.FragDestination">
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnDialog"
+        android:text="Show dialog"/>
     <GridView
+        android:layout_marginTop="45dp"
         android:id="@+id/gvDestination"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:numColumns="2"
-        android:verticalSpacing="4dp"
-        android:horizontalSpacing="4dp"
+        android:verticalSpacing="0dp"
+        android:horizontalSpacing="0dp"
         android:stretchMode="columnWidth"
         android:gravity="center"
         android:background="@color/colorPrimary"

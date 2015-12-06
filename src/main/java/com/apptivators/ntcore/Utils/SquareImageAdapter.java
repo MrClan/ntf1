@@ -66,7 +66,6 @@ public class SquareImageAdapter extends BaseAdapter {
                     R.drawable.trip_explore,
                     R.drawable.trip_hiking,
                     R.drawable.trip_mountaineering,
-                    R.drawable.trip_romantic,
-                    R.drawable.explore_thumb
+                    R.drawable.trip_romantic
             };
 }

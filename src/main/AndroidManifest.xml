@@ -13,8 +13,7 @@
         <activity
             android:name=".MainPage"
             android:label="NepTrip"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity android:name=".MainActivity" />
         <activity
             android:name=".FeaturedActivity"
@@ -33,18 +32,18 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_usersetup"
             android:theme="@style/FullscreenTheme" />
-        <activity
-            android:name=".DashboardTabs"
-            android:label="@string/title_activity_dashboard_tabs"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Dashboard">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".dialogtest"
+            android:label="@string/title_activity_dialogtest"
+            android:theme="@style/Theme.AppCompat.Dialog"
+            android:excludeFromRecents="true"></activity>
     </application>
 
 </manifest>

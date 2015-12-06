@@ -126,8 +126,8 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         }
         else if(id== R.id.nav_Dashboard)
         {
-            Intent i = new Intent(getBaseContext(), DashboardTabs.class);
-            startActivity(i);
+            /*Intent i = new Intent(getBaseContext(), DashboardTabs.class);
+            startActivity(i);*/
             proceed = false;
         }else if (id == R.id.nav_login) {
             // Show an alert before logging out
