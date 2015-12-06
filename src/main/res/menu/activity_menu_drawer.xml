@@ -30,6 +30,10 @@
             android:id="@+id/eventExploring"
             android:icon="@drawable/icon_exploring"
             android:title="Exploring" />
+        <item
+            android:id="@+id/nav_Dashboard"
+            android:icon="@drawable/icon_exploring"
+            android:title="@string/title_activity_dashboard_tabs" />
     </group>
     <item android:title="Personalize">
         <menu>

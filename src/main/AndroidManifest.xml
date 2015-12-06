@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.apptivators.ntcore">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -14,30 +14,37 @@
             android:name=".MainPage"
             android:label="NepTrip"
             android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".FeaturedActivity"
+            android:label="FeaturedActivityView"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".EventDetailActivity"
+            android:label="EventDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".HomePage"
+            android:label="Home Page"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UsersetupActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_usersetup"
+            android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name=".DashboardTabs"
+            android:label="@string/title_activity_dashboard_tabs"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Dashboard">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
-        <activity
-            android:name=".FeaturedActivity"
-            android:label="FeaturedActivityView"
-            android:screenOrientation="portrait"></activity>
-        <activity
-            android:name=".EventDetailActivity"
-            android:label="EventDetailActivity"
-            android:screenOrientation="portrait"></activity>
-        <activity
-            android:name=".HomePage"
-            android:label="Home Page"
-            android:screenOrientation="portrait"></activity>
-        <activity
-            android:name=".UsersetupActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_usersetup"
-            android:theme="@style/FullscreenTheme"></activity>
     </application>
 
 </manifest>

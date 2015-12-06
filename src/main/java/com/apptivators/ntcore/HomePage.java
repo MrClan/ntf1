@@ -31,6 +31,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_page);
+        U.c = this;
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -122,7 +123,13 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
             title = "Romantic Events";
         } else if (id == R.id.nav_setting) {
             fragment = new Preferences();
-        } else if (id == R.id.nav_login) {
+        }
+        else if(id== R.id.nav_Dashboard)
+        {
+            Intent i = new Intent(getBaseContext(), DashboardTabs.class);
+            startActivity(i);
+            proceed = false;
+        }else if (id == R.id.nav_login) {
             // Show an alert before logging out
             AlertDialog.Builder alert = new AlertDialog.Builder(this);
             alert.setMessage("Are you sure you want to logout of " + U.GetLocalUser() + "?");

@@ -43,29 +43,6 @@ public class EventsActivity  extends Fragment
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(mTitle);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
-        //POPULATE THE LIST VIEW
-        /*if(mTitle=="Featured Events") {
-            F.GetTrips(TripType.FEATURED);
-            events = new String[]{"Featured Event I ", "Featured Event II ", "Featured Event III ", "Featured Event IV ", "Featured Event V ", "Featured Event VI ", "Featured Event VII ", "Featured Event VIII ", "Featured Event IX ", "Featured Event X"};
-        }
-        else if(mTitle=="Adventure Events")
-            events = new String[] {"Adventure Rafting","Adventure mela","Adventure water Rafting","Adventure Rafting","Raft Nepal 2015","Canoning","Global Rafting","Rafting for a cause","Keep Rafting","Raft Today"};
-        else if(mTitle=="Casual Events")
-            events = new String[] {"Causel Walking","Rafting mela","White water Rafting","Sunshine Rafting","Raft Nepal 2015","Canoning","Global Rafting","Rafting for a cause","Keep Rafting","Raft Today"};
-        else if(mTitle=="Exploring Events")
-            events = new String[] {"Explore treasure","Rafting mela","White water Rafting","Sunshine Rafting","Raft Nepal 2015","Canoning","Global Rafting","Rafting for a cause","Keep Rafting","Raft Today"};
-        else if(mTitle=="Mountaineering Events")
-            events = new String[] {"ABC","Rafting mela","White water Rafting","Sunshine Rafting","Raft Nepal 2015","Canoning","Global Rafting","Rafting for a cause","Keep Rafting","Raft Today"};
-        else if(mTitle=="Hiking Events")
-            events = new String[] {"Sindhulli Hiking","Rafting mela","White water Rafting","Sunshine Rafting","Raft Nepal 2015","Canoning","Global Rafting","Rafting for a cause","Keep Rafting","Raft Today"};
-        else if(mTitle=="Romantic Events")
-            events = new String[] {"Pokhara Tour","Rafting mela","White water Rafting","Sunshine Rafting","Raft Nepal 2015","Canoning","Global Rafting","Rafting for a cause","Keep Rafting","Raft Today"};
-        else
-            events = new String[] {"Trisuli Rafting","Rafting mela","White water Rafting","Sunshine Rafting","Raft Nepal 2015","Canoning","Global Rafting","Rafting for a cause","Keep Rafting","Raft Today"};
-
-*/
-
         //TODO: TAKES ABOUT 3-4 SECONDS, SO A PROGRESSBAR OR PROGRESSDIALOG WOULD BE NICE HERE
 
 
