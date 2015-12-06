@@ -61,11 +61,23 @@ public class SquareImageAdapter extends BaseAdapter {
     // references to our images
     private Integer[] mThumbIds =
             {
-                    R.drawable.trip_adventure,
-                    R.drawable.trip_casual,
-                    R.drawable.trip_explore,
-                    R.drawable.trip_hiking,
-                    R.drawable.trip_mountaineering,
-                    R.drawable.trip_romantic
+                    R.drawable.img_menu_adventure,
+                    R.drawable.img_menu_something1,
+                    R.drawable.img_menu_exploring,
+                    R.drawable.img_menu_hiking,
+                    R.drawable.img_menu_mountaineering,
+                    R.drawable.img_menu_roaming,
+                    R.drawable.img_menu_something2,
+                    R.drawable.img_menu_casual,
+                    R.drawable.img_menu_romantic,
+                    R.drawable.img_menu_transportation_plane,
+                    R.drawable.img_menu_transportation_bike,
+                    R.drawable.img_menu_transportation_bus,
+                    R.drawable.img_menu_transportation_cycle,
+                    R.drawable.img_menu_transportation_jeep,
+                    R.drawable.img_menu_transportation_rickshaw,
+                    R.drawable.img_menu_transportation_taxi,
+                    R.drawable.img_menu_transportation_tempo,
+                    R.drawable.img_menu_transportation_walking
             };
 }

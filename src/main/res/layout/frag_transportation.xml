@@ -17,13 +17,15 @@
             android:layout_height="wrap_content"
             android:id="@+id/imageView7"
             android:layout_gravity="center_horizontal|top"
-            android:background="@drawable/event_pic_03" />
+            android:background="@drawable/img_transportation_header"
+            android:tint="#000000"
+            android:tintMode="multiply" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Destinations"
+            android:text="Transportation"
             android:id="@+id/textView2"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
@@ -35,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Choose your destination genre"
+            android:text="Travel your own way"
             android:id="@+id/textView3"
             android:textSize="15sp"
             android:textColor="#ffffff"
@@ -59,7 +61,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="312 active events"
+                android:text="12 Routes"
                 android:id="@+id/textView4"
                 android:layout_gravity="center_horizontal"
                 android:textColor="#ffffff" />
@@ -73,7 +75,7 @@
         android:layout_weight="60">
 
         <GridView
-            android:id="@+id/gvDestination"
+            android:id="@+id/gvTransportation"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:numColumns="3"

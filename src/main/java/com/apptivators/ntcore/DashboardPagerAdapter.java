@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import com.astuetz.PagerSlidingTabStrip;
 
 import layout.FragDestination;
+import layout.FragTransportation;
 
 public class DashboardPagerAdapter extends FragmentPagerAdapter  {
     final int PAGE_COUNT = 6;
@@ -27,7 +28,7 @@ public class DashboardPagerAdapter extends FragmentPagerAdapter  {
         if (position == 0)
             return FragDestination.newInstance(null); // pass the class of activity where we are supposed to navigate to on click of gridView item
         else if (position == 1)
-            return eventDetailGallery_Fragment.newInstance(position + 1);
+            return FragTransportation.newInstance(null);
         else if (position == 2)
             return eventDetailMap_Fragment.newInstance(position + 1);
         else if (position == 3)

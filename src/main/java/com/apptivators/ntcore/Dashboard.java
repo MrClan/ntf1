@@ -22,6 +22,8 @@ public class Dashboard extends AppCompatActivity {
 
 
         PagerSlidingTabStrip tabsStrip = (PagerSlidingTabStrip) findViewById(R.id.tabsDashboard);
+        tabsStrip.setTextColorResource(R.color.white);
+        tabsStrip.setTextSize(35);
         tabsStrip.setShouldExpand(true);
         tabsStrip.setViewPager(viewPager);
         tabsStrip.setShouldExpand(false);

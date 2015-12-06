@@ -8,25 +8,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Toast;
 
 import com.apptivators.ntcore.R;
 import com.apptivators.ntcore.Utils.SquareImageAdapter;
-import com.apptivators.ntcore.dialogtest;
 
 /**
- * Created by Pratik on 12/6/2015.
+ * Created by suchan on 12/6/2015.
  */
-public class FragDestination extends Fragment {
+public class FragTransportation extends Fragment
+{
 
     static Class targetActivity = null;
     private int mPage;
 
-    public static FragDestination newInstance(Class tgtActivity) {
+    public static FragTransportation newInstance(Class tgtActivity) {
         Bundle args = new Bundle();
-        FragDestination fragment = new FragDestination();
+        FragTransportation fragment = new FragTransportation();
         fragment.setArguments(args);
         targetActivity = tgtActivity;
         return fragment;
@@ -38,9 +37,9 @@ public class FragDestination extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.frag_destination, container, false);
+        final View view = inflater.inflate(R.layout.frag_transportation, container, false);
         final Activity curActivity = getActivity();
-        GridView gridview = (GridView) view.findViewById(R.id.gvDestination);
+        GridView gridview = (GridView) view.findViewById(R.id.gvTransportation);
         gridview.setAdapter(new SquareImageAdapter(curActivity));
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
