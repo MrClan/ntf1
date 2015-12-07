@@ -7,6 +7,9 @@ import com.astuetz.PagerSlidingTabStrip;
 
 import layout.FragAccomodation;
 import layout.FragDestination;
+import layout.FragEvent;
+import layout.FragFacility;
+import layout.FragPackage;
 import layout.FragTransportation;
 
 public class DashboardPagerAdapter extends FragmentPagerAdapter  {
@@ -33,11 +36,11 @@ public class DashboardPagerAdapter extends FragmentPagerAdapter  {
         else if (position == 2)
             return FragAccomodation.newInstance(null);
         else if (position == 3)
-            return eventDetailCalendar_Fragment.newInstance(position + 1);
+            return FragPackage.newInstance(null);
         if (position == 4)
-            return FragDestination.newInstance(HomePage.class); // pass the class of activity where we are supposed to navigate to on click of gridView item
+            return FragEvent.newInstance(null);
         else
-            return eventDetailGallery_Fragment.newInstance(position + 1);
+            return FragFacility.newInstance(null);
     }
 
 
