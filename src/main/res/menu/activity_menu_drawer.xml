@@ -3,37 +3,33 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/eventFeatured"
-            android:icon="@drawable/icon_featured"
-            android:title="Featured Events" />
+            android:id="@+id/nav_menu_dashboard"
+            android:icon="@drawable/img_btn_home"
+            android:title="Dashboard" />
         <item
-            android:id="@+id/eventAdventure"
-            android:icon="@drawable/icon_adventure"
-            android:title="Adventure" />
+            android:id="@+id/nav_menu_review"
+            android:icon="@drawable/icon_btn_review"
+            android:title="Review" />
         <item
-            android:id="@+id/eventCausal"
-            android:icon="@drawable/icon_casual"
-            android:title="Casual" />
+            android:id="@+id/nav_menu_planner"
+            android:icon="@drawable/icon_btn_planner"
+            android:title="Planner " />
         <item
-            android:id="@+id/eventRomantic"
-            android:icon="@drawable/icon_romantictrip"
-            android:title="Romantic" />
+            android:id="@+id/nav_menu_map"
+            android:icon="@drawable/img_btn_map"
+            android:title="Map" />
         <item
-            android:id="@+id/eventHiking"
-            android:icon="@drawable/icon_hiking"
-            android:title="Hiking" />
+            android:id="@+id/nav_menu_stories"
+            android:icon="@drawable/icon_btn_stories"
+            android:title="Stories" />
         <item
-            android:id="@+id/eventMountaineering"
-            android:icon="@drawable/icon_mountaining"
-            android:title="Mountaineering" />
+            android:id="@+id/nav_menu_currency"
+            android:icon="@drawable/icon_btn_currency"
+            android:title="Currency Converter" />
         <item
-            android:id="@+id/eventExploring"
-            android:icon="@drawable/icon_exploring"
-            android:title="Exploring" />
-        <item
-            android:id="@+id/nav_Dashboard"
-            android:icon="@drawable/icon_exploring"
-            android:title="@string/title_activity_dashboard_tabs" />
+            android:id="@+id/nav_menu_notification"
+            android:icon="@drawable/icon_btn_notification"
+            android:title="Notifications" />
     </group>
     <item android:title="Personalize">
         <menu>
