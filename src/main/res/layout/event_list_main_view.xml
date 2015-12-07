@@ -7,6 +7,13 @@
     android:orientation="vertical"
     tools:context="com.apptivator.eventhub.EventListMainView">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_awesome_toolbar"
+        android:layout_height="56dp"
+        android:layout_width="match_parent"
+        android:minHeight="?attr/actionBarSize"
+        android:titleTextAppearance="@color/white"
+        android:background="?attr/colorPrimary"></android.support.v7.widget.Toolbar>
     <ListView
         android:id="@+id/listViewFood"
         android:layout_width="fill_parent"

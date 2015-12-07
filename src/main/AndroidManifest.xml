@@ -28,6 +28,10 @@
             android:label="EventDetailActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".EventListingPage"
+            android:label="Event Listing Page"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".HomePage"
             android:label="Home Page"
             android:screenOrientation="portrait" >
