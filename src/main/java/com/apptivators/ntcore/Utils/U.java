@@ -14,10 +14,14 @@ import android.widget.Toast;
 
 import com.apptivators.ntcore.HomePage;
 import com.apptivators.ntcore.MainPage;
+import com.apptivators.ntcore.Models.TripType;
 import com.apptivators.ntcore.Models.User;
 import com.apptivators.ntcore.UsersetupActivity;
 import com.bumptech.glide.Glide;
 import com.firebase.client.Firebase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Pratik on 12/4/2015.
@@ -27,6 +31,21 @@ public class U {
     public static Context c;
     private final static String settingsFileName = "App_Settings";
     private final static String userNameKey = "userkey";
+
+
+    public final static Map<TripType,String> TRIP_TYPE_STRING_MAP = new HashMap<TripType, String>(){
+        {
+            put(TripType.ADVENTURE,"Adventure");
+            put(TripType.ROMANTIC,"Roamntic");
+            put(TripType.CASUAL,"Casual");
+            put(TripType.EXPLORING,"Exploring");
+            put(TripType.FEATURED,"Featured");
+            put(TripType.MOUNTAINEERING,"Mountaineering");
+            put(TripType.SOCIAL,"Social");
+            put(TripType.HIKING,"Hiking");
+            put(TripType.FESTIVAL,"Festival");
+        }
+    };
 
     public static boolean CheckUserStatus() {
         // check sharedPreferences for existing user details

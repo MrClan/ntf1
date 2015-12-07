@@ -10,7 +10,6 @@ import com.apptivators.ntcore.HomePage;
 import com.apptivators.ntcore.Models.Trip;
 import com.apptivators.ntcore.Models.TripType;
 import com.apptivators.ntcore.Models.User;
-import com.apptivators.ntcore.UsersetupActivity;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -18,7 +17,9 @@ import com.firebase.client.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Pratik on 12/4/2015.
@@ -26,10 +27,27 @@ import java.util.List;
  */
 public class F {
 
-    public final static String rootNode = "https://neptrip.firebaseio.com/v1";
+    public final static String rootNode = "https://ntf1.firebaseio.com/v1";//https://neptrip.firebaseio.com/v1";
     public final static String usersNode = "/users";
     public final static String eventsRefNode = "/events";
+    public final static String romaticCitiesNode = "/RomanticCities";
+    public final static String adventureCitiesNode = "/adventureCities";
+    public final static String religiousCitiesNode = "/ReligiousCities";
+    public final static String businessCitiesNode = "/BusinessCities";
+    public final static String casualCitiesNode = "/CasualCities";
+    public final static String exploreCitiesNode = "/ExploreCities";
+    public final static String mountainCitiesNode = "/MountainCities";
 
+
+    public final static Map<TripType, String> NodeMaps = new HashMap<TripType, String>() {
+        {
+            put(TripType.ADVENTURE, F.adventureCitiesNode);
+            put(TripType.ROMANTIC, F.romaticCitiesNode);
+            put(TripType.CASUAL, F.casualCitiesNode);
+            put(TripType.EXPLORING, F.exploreCitiesNode);
+            put(TripType.MOUNTAINEERING, F.mountainCitiesNode);
+        }
+    };
 
     public static boolean CheckIfUserExists(final String username, final View view, final AutoCompleteTextView autoCompleteTextView, final Context c, final boolean loginIfUserExists) {
         U.ShowToast("Checking for user: " + username);
@@ -47,7 +65,7 @@ public class F {
                         U.SetLocalUser(u);
                         Intent i = new Intent(c, HomePage.class);
                         c.startActivity(i);
-                        ((Activity)c).finish();
+                        ((Activity) c).finish();
                     } else {
                         U.ShowAlert("No user with username: " + username + " found. How about signing up as new user ?");
                         U.ShowProgress(true, view);
@@ -65,7 +83,7 @@ public class F {
                         U.SetLocalUser(u);
                         Intent i = new Intent(c, HomePage.class);
                         c.startActivity(i);
-                        ((Activity)c).finish();
+                        ((Activity) c).finish();
                     } else {
                         U.ShowAlert("A user with username: " + username + " already exists. Please pick a different one.");
                         U.ShowProgress(true, view);
