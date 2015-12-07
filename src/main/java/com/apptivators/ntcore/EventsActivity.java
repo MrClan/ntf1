@@ -3,7 +3,10 @@ package com.apptivators.ntcore;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +44,9 @@ public class EventsActivity extends Fragment {
         String mTitle = getArguments().getString("title");
         dataType = getArguments().getString("dataType");
 
+        if(dataType== null)
+            dataType="";
+
         //SET THE ACTIONBAR TITLE & ICON
         //((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(mTitle);
         //((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -61,6 +67,27 @@ public class EventsActivity extends Fragment {
                         startActivity(i);
                     }
                 }
+        );
+
+        //SETUP THE TOOLBAR
+        final Toolbar advToolbar = (Toolbar) view.findViewById(R.id.my_awesome_toolbar);
+        advToolbar.setNavigationIcon(R.drawable.nav_drawer);
+        advToolbar.setTitle("Events");
+        advToolbar.setTitleTextColor(R.color.colorPrimaryDark);
+        advToolbar.inflateMenu(R.menu.advance_search);
+
+        advToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(View v) {
+                                                        Toast.makeText(getActivity(), "Nav drawer clicked", Toast.LENGTH_SHORT).show();
+                                                        DrawerLayout drawer = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+                                                        if (drawer.isDrawerOpen(GravityCompat.START)) {
+                                                            drawer.closeDrawer(GravityCompat.START);
+                                                        } else {
+                                                            drawer.openDrawer(GravityCompat.START);
+                                                        }
+                                                    }
+                                                }
         );
         return view;
     }
