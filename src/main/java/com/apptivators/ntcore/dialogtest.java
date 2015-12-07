@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.apptivators.ntcore.Models.Trip;
+
 
 public class dialogtest extends AppCompatActivity {
 
@@ -25,6 +27,11 @@ public class dialogtest extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        Trip t = new Trip("Tilicho Trip", "New Travels", "Lazimpat", "Dhulikhel", "Nagarkot", 15000, "9th Dec", "9th Dec", "http://res.cloudinary.com/pratik/image/upload/v1449251051/4_n5ekjl.jpg", "Any", "Mountaineering", "Explore the uncharted terrains of Nepal. Places never been walked before. Experience most pristine form of nature.");
+
+        setTitle(t.getTitle());
+
 
     }
 

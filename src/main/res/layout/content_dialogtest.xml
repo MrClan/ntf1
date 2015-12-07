@@ -20,6 +20,51 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="title of the trip"
+                android:id="@+id/tvTripTitle" android:textSize="24sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Vendor: Global Travels"
+                android:id="@+id/tvTripVendor" android:textSize="24sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Start point: Nagarkot"
+                android:id="@+id/tvTripStartPoint" android:textSize="24sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="End point: Kathmandu"
+                android:id="@+id/tvTripEndPoint" android:textSize="24sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Description"
+                android:id="@+id/tvTripDesc" android:textSize="24sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="No of attendees = 540"
+                android:id="@+id/tvTripAttendees" android:textSize="24sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="COST $$$"
+                android:id="@+id/tvTripCost" android:textSize="24sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CATEGORY"
+                android:id="@+id/tvTripCategory" android:textSize="24sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="VENUE"
+                android:id="@+id/tvTripVenue" android:textSize="24sp"/>
 
         <TextView
             android:layout_width="match_parent"
