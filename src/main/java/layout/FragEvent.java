@@ -41,7 +41,7 @@ public class FragEvent extends Fragment
         final View view = inflater.inflate(R.layout.frag_event, container, false);
         final Activity curActivity = getActivity();
         GridView gridview = (GridView) view.findViewById(R.id.gvEvent);
-        gridview.setAdapter(new SquareImageAdapter(curActivity));
+        gridview.setAdapter(new SquareImageAdapter(curActivity, SquareImageAdapter.ItemType.DESTINATION));
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,

@@ -21,6 +21,7 @@ public class FragAccomodation extends Fragment
 {
 
     static Class targetActivity = null;
+    final static SquareImageAdapter.ItemType ITEM_TYPE = SquareImageAdapter.ItemType.ACCOMODATION;
     private int mPage;
 
     public static FragAccomodation newInstance(Class tgtActivity) {
@@ -40,7 +41,7 @@ public class FragAccomodation extends Fragment
         final View view = inflater.inflate(R.layout.frag_accomodation, container, false);
         final Activity curActivity = getActivity();
         GridView gridview = (GridView) view.findViewById(R.id.gvAccomodation);
-        gridview.setAdapter(new SquareImageAdapter(curActivity));
+        gridview.setAdapter(new SquareImageAdapter(curActivity, ITEM_TYPE));
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,

@@ -20,6 +20,10 @@
             android:label="FeaturedActivityView"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".CityListActivity"
+            android:label="Applicable Cities List"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".EventDetailActivity"
             android:label="EventDetailActivity"
             android:screenOrientation="portrait" />
