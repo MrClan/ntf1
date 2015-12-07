@@ -60,6 +60,12 @@ public class FragDestination extends Fragment {
                         i.putExtra("dataType", "RomanticCities");
                         ctx.startActivity(i);
                         break;
+                    case 2:
+                        // load romantic city list
+                        Intent i1 = new Intent(ctx, CityListActivity.class);
+                        i1.putExtra("dataType", "RomanticCities");
+                        ctx.startActivity(i1);
+                        break;
                     default:
                         Toast.makeText(curActivity, "ROMANTIC NOT CLICKED @ " + position,
                                 Toast.LENGTH_SHORT).show();
