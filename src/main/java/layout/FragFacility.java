@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import com.apptivators.ntcore.ImageAdapter;
 import com.apptivators.ntcore.R;
 import com.apptivators.ntcore.Utils.SquareImageAdapter;
 import com.apptivators.ntcore.dialogtest;
@@ -43,7 +44,7 @@ public class FragFacility extends Fragment
         final View view = inflater.inflate(R.layout.frag_facility, container, false);
         final Activity curActivity = getActivity();
         GridView gridview = (GridView) view.findViewById(R.id.gvFacility);
-        gridview.setAdapter(new SquareImageAdapter(curActivity));
+        gridview.setAdapter(new ImageAdapter(curActivity,1));
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,

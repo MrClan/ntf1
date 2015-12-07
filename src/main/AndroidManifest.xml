@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.apptivators.ntcore">
+    package="com.apptivators.ntcore" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -9,11 +9,11 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme" >
         <activity
             android:name=".MainPage"
             android:label="NepTrip"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity android:name=".MainActivity" />
         <activity
             android:name=".FeaturedActivity"
@@ -32,20 +32,19 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            </activity>
+        </activity>
         <activity
             android:name=".UsersetupActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_usersetup"
             android:theme="@style/FullscreenTheme" />
-        <activity android:name=".Dashboard">
-
+        <activity android:name=".Dashboard" >
         </activity>
         <activity
             android:name=".dialogtest"
+            android:excludeFromRecents="true"
             android:label="@string/title_activity_dialogtest"
-            android:theme="@style/Theme.AppCompat.Dialog"
-            android:excludeFromRecents="true"></activity>
+            android:theme="@style/Theme.AppCompat.Dialog" />
     </application>
 
 </manifest>
