@@ -19,9 +19,29 @@ import java.util.List;
 
 public class SquareImageAdapter extends BaseAdapter {
     private Context mContext;
+    private Integer[] mThumbIds;
 
-    public SquareImageAdapter(Context c) {
+    public enum ItemType
+    {
+        TRANSPORTATION, ACCOMODATION, DESTINATION
+    }
+
+    public SquareImageAdapter(Context c, ItemType itemType ) {
         mContext = c;
+        switch(itemType)
+        {
+            case ACCOMODATION:
+                mThumbIds = mThumbIdsAccomodation;
+                break;
+            case DESTINATION:
+                mThumbIds = mThumbIdsDestinations;
+                break;
+            case TRANSPORTATION:
+                mThumbIds = mThumbIdsTransportation;
+                break;
+            default:
+                mThumbIds = mThumbIdsDestinations;
+        }
         //List<Integer> thumbIds = new ArrayList<>();
         /*for(Category cat : Category.GetAll())
             thumbIds.add(cat.imgResourceId);*/
@@ -59,13 +79,40 @@ public class SquareImageAdapter extends BaseAdapter {
 
 
     // references to our images
-    private Integer[] mThumbIds =
+    private Integer[] mThumbIdsDestinations =
             {
-                    R.drawable.trip_adventure,
-                    R.drawable.trip_casual,
-                    R.drawable.trip_explore,
-                    R.drawable.trip_hiking,
-                    R.drawable.trip_mountaineering,
-                    R.drawable.trip_romantic
+                    R.drawable.img_menu_adventure,
+                    R.drawable.img_menu_something1,
+                    R.drawable.img_menu_exploring,
+                    R.drawable.img_menu_hiking,
+                    R.drawable.img_menu_mountaineering,
+                    R.drawable.img_menu_roaming,
+                    R.drawable.img_menu_something2,
+                    R.drawable.img_menu_casual,
+                    R.drawable.img_menu_romantic
+            };
+
+    private Integer[] mThumbIdsTransportation =
+            {
+                    R.drawable.img_menu_transportation_plane,
+                    R.drawable.img_menu_transportation_bike,
+                    R.drawable.img_menu_transportation_bus,
+                    R.drawable.img_menu_transportation_cycle,
+                    R.drawable.img_menu_transportation_jeep,
+                    R.drawable.img_menu_transportation_rickshaw,
+                    R.drawable.img_menu_transportation_taxi,
+                    R.drawable.img_menu_transportation_tempo,
+                    R.drawable.img_menu_transportation_walking
+            };
+
+    private Integer[] mThumbIdsAccomodation =
+            {
+
+                    R.drawable.img_menu_acomodation_fivestarhotel,
+                    R.drawable.img_menu_acomodation_premiumhotel,
+                    R.drawable.img_menu_acomodation_budgethotel,
+                    R.drawable.img_menu_acomodation_homestay,
+                    R.drawable.img_menu_acomodation_villa,
+                    R.drawable.img_menu_acomodation_motel
             };
 }

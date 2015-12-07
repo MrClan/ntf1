@@ -68,7 +68,7 @@
             app:pstsIndicatorColor="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:background="#6c6c6c" />
+            android:background="@color/backgroundDark" />
 
         <android.support.v4.view.ViewPager
             android:id="@+id/viewpager"

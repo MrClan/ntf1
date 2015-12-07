@@ -36,7 +36,7 @@ public class eventDetailGallery_Fragment extends Fragment
     {
         View v = inflater.inflate(R.layout.event_detail_gallery_fragment,container,false);
         gridview = (GridView)v.findViewById(R.id.gridview);
-        gridview.setAdapter(new ImageAdapter(v.getContext()));
+        gridview.setAdapter(new ImageAdapter(v.getContext(),0));
         return v;
     }
 }
