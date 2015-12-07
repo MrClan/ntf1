@@ -107,9 +107,9 @@ public class ImageAdapter extends BaseAdapter {
     // references to our images
     private Integer[] mThumbIds = {
             R.drawable.city_butwal, R.drawable.city_kathmandu,
-            R.drawable.sample_4, R.drawable.sample_5,
-            R.drawable.sample_6, R.drawable.sample_7,
-            R.drawable.sample_0, R.drawable.sample_1,
+            R.drawable.city_chitwan, R.drawable.city_jumla,
+            R.drawable.city_karnali, R.drawable.city_kavre,
+            R.drawable.city_pokhara, R.drawable.city_janakpur,
             R.drawable.sample_2, R.drawable.sample_3,
             R.drawable.sample_4, R.drawable.sample_5,
             R.drawable.sample_6, R.drawable.sample_7,
@@ -121,9 +121,9 @@ public class ImageAdapter extends BaseAdapter {
 
     private String[] mThumbInfo = {
             "Butwal", "Kathmandu",
-            "sample_4", "sample_5",
-            "sample_6", "sample_7",
-            "sample_0", "sample_1",
+            "Chitwan", "Jumla",
+            "Karnali", "Kavre",
+            "Pokhara", "Janakpur",
             "sample_2", "sample_3",
             "sample_4", "sample_5",
             "sample_6", "sample_7",
