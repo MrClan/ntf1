@@ -7,6 +7,7 @@ import android.view.MotionEvent;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.apptivators.ntcore.Models.Event;
 import com.apptivators.ntcore.Models.Trip;
 import com.apptivators.ntcore.Utils.U;
 import com.astuetz.PagerSlidingTabStrip;
@@ -31,19 +32,19 @@ public class EventDetailActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
 
-        getSupportActionBar().setTitle("Event Details");
+        /*getSupportActionBar().setTitle("Event Details");
         getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
         setContentView(R.layout.event_detail_view);
 
         ButterKnife.bind(this);
 
         Bundle b = this.getIntent().getExtras();
-        Trip trip = (Trip)b.getSerializable("curTrip");
+        Event event = (Event)b.getSerializable("curItem");
 
-        lblTitle.setText(trip.getTitle());
-        lblEventDetail.setText("From " + trip.getStartTime() + " till " + trip.getEndTime() + " at " + trip.getVenue());
-        U.LoadImage(this, iv, trip.getImgName());
+        lblTitle.setText(event.getTitle());
+        lblEventDetail.setText("From " + event.getStartdate() + " till " + event.getEnddate() + " at " + event.getCity());
+        U.LoadImage(this, iv, event.getImgName());
 
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);

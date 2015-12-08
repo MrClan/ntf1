@@ -1,9 +1,11 @@
 package com.apptivators.ntcore.Models;
 
+import java.io.Serializable;
+
 /**
  * Created by Pratik on 12/8/2015.
  */
-public class Event {
+public class Event implements Serializable{
     public String Host;
     public String accomodation;
     public String budgettype;
@@ -19,6 +21,11 @@ public class Event {
     public String transportationmode;
     public String triproute;
     public String averagetravelperday;
+    public String imgName;
+
+    public String getImgName() {
+        return imgName;
+    }
 
     public String getAveragetravelperday() {
         return averagetravelperday;

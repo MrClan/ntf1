@@ -9,33 +9,29 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Toast;
 
 import com.apptivators.ntcore.CityListActivity;
-import com.apptivators.ntcore.PackageListingPage;
+import com.apptivators.ntcore.ListingPage;
 import com.apptivators.ntcore.R;
-import com.apptivators.ntcore.Utils.F;
 import com.apptivators.ntcore.Utils.SquareImageAdapter;
-import com.apptivators.ntcore.dialogtest;
 
 /**
  * Created by Pratik on 12/6/2015.
  */
 public class FragDestination extends Fragment {
 
-    static Class targetActivity = null;
     final static SquareImageAdapter.ItemType ITEM_TYPE = SquareImageAdapter.ItemType.DESTINATION;
     private int mPage;
 
-    public static FragDestination newInstance(Class tgtActivity) {
+    public static FragDestination newInstance() {
         Bundle args = new Bundle();
         FragDestination fragment = new FragDestination();
         fragment.setArguments(args);
-        targetActivity = tgtActivity;
         return fragment;
     }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,31 +48,26 @@ public class FragDestination extends Fragment {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
 
+                Intent i = null;
+
                 Context ctx = view.getContext();
-                switch(position)
-                {
+                switch (position) {
                     case 1:
                         // load romantic city list
-                        Intent i = new Intent(ctx, CityListActivity.class);
+                        i = new Intent(ctx, CityListActivity.class);
                         i.putExtra("dataType", "RomanticCities");
-                        ctx.startActivity(i);
                         break;
                     case 2:
                         // load romantic city list
-                        Intent i1 = new Intent(ctx, PackageListingPage.class);
-                        i1.putExtra("dataType", "RomanticCities");
-                        ctx.startActivity(i1);
+                        i = new Intent(ctx, ListingPage.class);
+                        i.putExtra("dataType", "RomanticCities");
                         break;
                     default:
-                        Toast.makeText(curActivity, "ROMANTIC NOT CLICKED @ " + position,
-                                Toast.LENGTH_SHORT).show();
                         break;
                 }
-                // when position = 1 => data = Romantic
-
-
-                if (targetActivity != null) {
-                    startActivity(new Intent(view.getContext(), targetActivity));
+                if (i != null) {
+                    i.putExtra("viewType", "Packages");
+                    ctx.startActivity(i);
                 }
 
                 // start target activity on click

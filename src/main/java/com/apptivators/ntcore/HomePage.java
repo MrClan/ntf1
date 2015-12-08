@@ -169,7 +169,6 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
             fragmentManager.beginTransaction()
                     .replace(R.id.frameLayout, fragment)
                     .commit();
-            U.ShowToast(title);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

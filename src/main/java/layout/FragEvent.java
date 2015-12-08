@@ -13,8 +13,8 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 import com.apptivators.ntcore.CityListActivity;
-import com.apptivators.ntcore.EventListingPage;
-import com.apptivators.ntcore.EventsActivity;
+import com.apptivators.ntcore.ListingPage;
+import com.apptivators.ntcore.Models.TripType;
 import com.apptivators.ntcore.R;
 import com.apptivators.ntcore.Utils.SquareImageAdapter;
 
@@ -24,14 +24,12 @@ import com.apptivators.ntcore.Utils.SquareImageAdapter;
  */
 public class FragEvent extends Fragment {
 
-    static Class targetActivity = null;
     private int mPage;
 
-    public static FragEvent newInstance(Class tgtActivity) {
+    public static FragEvent newInstance() {
         Bundle args = new Bundle();
         FragEvent fragment = new FragEvent();
         fragment.setArguments(args);
-        targetActivity = tgtActivity;
         return fragment;
     }
 
@@ -50,21 +48,20 @@ public class FragEvent extends Fragment {
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
-                Toast.makeText(curActivity, "" + position,
-                        Toast.LENGTH_SHORT).show();
-
                 Context ctx = view.getContext();
                 // load romantic city list
 
-                Intent i1 = new Intent(ctx, EventListingPage.class);
-                i1.putExtra("dataType", "Events");
-                ctx.startActivity(i1);
 
-                /*if (targetActivity != null) {
-                    startActivity(new Intent(view.getContext(), targetActivity));
-                }*/
-
-
+                Intent i = new Intent(ctx, ListingPage.class);;
+                switch (position) {
+                    default:
+                        break;
+                }
+                if (i != null) {
+                    i.putExtra("viewType", "Events");
+                    i.putExtra("dataType", "SocialEvents");
+                    ctx.startActivity(i);
+                }
             }
         });
 

@@ -23,6 +23,7 @@ import com.apptivators.ntcore.Models.Event;
 import com.apptivators.ntcore.Models.Trip;
 import com.apptivators.ntcore.Models.TripType;
 import com.apptivators.ntcore.Utils.F;
+import com.apptivators.ntcore.Utils.U;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -45,6 +46,7 @@ public class EventsActivity extends Fragment {
         listView = (ListView) view.findViewById(R.id.listViewFood);
         String mTitle = getArguments().getString("title");
         dataType = getArguments().getString("dataType");
+        U.c = this.getActivity();
 
         if(dataType== null)
             dataType="";
@@ -60,11 +62,10 @@ public class EventsActivity extends Fragment {
                 new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Trip curItem = (Trip) (parent.getItemAtPosition(position));
-                        Toast.makeText(getActivity(), curItem.getTitle(), Toast.LENGTH_LONG).show();
+                        Event curItem = (Event) (parent.getItemAtPosition(position));
                         Intent i = new Intent(getActivity(), EventDetailActivity.class);
                         Bundle b = new Bundle();
-                        b.putSerializable("curTrip", curItem);
+                        b.putSerializable("curItem", curItem);
                         i.putExtras(b);
                         startActivity(i);
                     }
@@ -81,7 +82,6 @@ public class EventsActivity extends Fragment {
         advToolbar.setNavigationOnClickListener(new View.OnClickListener() {
                                                     @Override
                                                     public void onClick(View v) {
-                                                        Toast.makeText(getActivity(), "Nav drawer clicked", Toast.LENGTH_SHORT).show();
                                                         DrawerLayout drawer = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
                                                         if (drawer.isDrawerOpen(GravityCompat.START)) {
                                                             drawer.closeDrawer(GravityCompat.START);
@@ -97,15 +97,18 @@ public class EventsActivity extends Fragment {
 
     private void LoadData() {
 
-        // Read from extras, and load data accordingly
-        switch (dataType) {
-            case "RomanticCities":
-                LoadCities(TripType.ROMANTIC);
-                break;
-            case "Events":
-            default:
-                LoadEventsData();
-                break;
+        if(U.IsOnline()) {
+            // Read from extras, and load data accordingly
+            switch (dataType) {
+                case "RomanticEvents":
+                    LoadCities(TripType.ROMANTIC);
+                    break;
+                case "SocialEvents":
+                case "Events":
+                default:
+                    LoadEventsData();
+                    break;
+            }
         }
     }
 

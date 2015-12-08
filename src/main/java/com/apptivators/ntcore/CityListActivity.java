@@ -186,7 +186,7 @@ public class CityListActivity extends AppCompatActivity implements NavigationVie
             fragmentManager.beginTransaction()
                     .replace(R.id.frameLayout, fragment)
                     .commit();
-            U.ShowToast(title);
+
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

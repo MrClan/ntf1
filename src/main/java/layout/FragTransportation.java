@@ -46,8 +46,7 @@ public class FragTransportation extends Fragment
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
-                Toast.makeText(curActivity, "" + position,
-                        Toast.LENGTH_SHORT).show();
+
 
                 if (targetActivity != null) {
                     startActivity(new Intent(view.getContext(), targetActivity));

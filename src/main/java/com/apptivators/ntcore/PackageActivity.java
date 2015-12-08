@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.apptivators.ntcore.Adapters.PackageListAdapter;
 import com.apptivators.ntcore.Models.NepTripPackage;
 import com.apptivators.ntcore.Utils.F;
+import com.apptivators.ntcore.Utils.U;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -52,7 +53,6 @@ public class PackageActivity extends Fragment {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         String food = String.valueOf(parent.getItemAtPosition(position));
-                        Toast.makeText(getActivity(), food, Toast.LENGTH_LONG).show();
                         Intent i = new Intent(getActivity(), PackageDetailActivity.class);
                         startActivity(i);
                     }
@@ -70,9 +70,36 @@ public class PackageActivity extends Fragment {
         //SETUP THE FILTER TOOLBAR
         setupFilterToolbar();
 
-        //LOAD TEMP DATA
         LoadPackageList();
         return view;
+    }
+
+    static List<NepTripPackage> packages = new ArrayList<NepTripPackage>();
+
+    private void LoadPackageList()
+    {
+        if(U.IsOnline()) {
+            Firebase packagesRef = new Firebase(F.rootNode + F.packagesNode);
+            packagesRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    for (DataSnapshot pck : dataSnapshot.getChildren()) {
+                        NepTripPackage p = pck.getValue(NepTripPackage.class);
+                        p.Host = pck.getKey();
+                        packages.add(p);
+                    }
+
+                    PackageListAdapter listAdp = new PackageListAdapter(getActivity(), packages, R.layout.package_list_single_view);
+                    listView.setAdapter(listAdp);
+                }
+
+                @Override
+                public void onCancelled(FirebaseError firebaseError) {
+
+                }
+            });
+        }
     }
 
     private void setupFilterToolbar() {
@@ -95,12 +122,9 @@ public class PackageActivity extends Fragment {
         citySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(position != 0) {
+                if (position != 0) {
 
                     String selectedCity = cityCategory[position].toLowerCase();
-                    Toast.makeText(getActivity(),
-                            "Searching for packages in : " + selectedCity,
-                            Toast.LENGTH_SHORT).show();
                     if (packages.size() > 0) {
                         ArrayList<NepTripPackage> searchResults = new ArrayList<NepTripPackage>();
                         for (NepTripPackage p : packages) {
@@ -110,9 +134,7 @@ public class PackageActivity extends Fragment {
                         PackageListAdapter listAdp = new PackageListAdapter(getActivity(), searchResults, R.layout.package_list_single_view);
                         listView.setAdapter(listAdp);
                     }
-                }
-                else
-                {
+                } else {
                     PackageListAdapter listAdp = new PackageListAdapter(getActivity(), packages, R.layout.package_list_single_view);
                     listView.setAdapter(listAdp);
                 }
@@ -128,9 +150,6 @@ public class PackageActivity extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                Toast.makeText(getActivity(),
-                        "Selected date : " + dateCategory[position],
-                        Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -151,7 +170,6 @@ public class PackageActivity extends Fragment {
         advToolbar.setNavigationOnClickListener(new View.OnClickListener() {
                                                     @Override
                                                     public void onClick(View v) {
-                                                        Toast.makeText(getActivity(), "Nav drawer clicked", Toast.LENGTH_SHORT).show();
                                                         DrawerLayout drawer = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
                                                         if (drawer.isDrawerOpen(GravityCompat.START)) {
                                                             drawer.closeDrawer(GravityCompat.START);
@@ -163,30 +181,6 @@ public class PackageActivity extends Fragment {
         );
     }
 
-    static List<NepTripPackage> packages = new ArrayList<NepTripPackage>();
 
-    private void LoadPackageList()
-    {
-        Firebase packagesRef = new Firebase(F.rootNode + F.packagesNode);
-        packagesRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                for (DataSnapshot pck : dataSnapshot.getChildren()) {
-                    NepTripPackage p = pck.getValue(NepTripPackage.class);
-                    p.Host = pck.getKey();
-                    packages.add(p);
-                }
-
-                PackageListAdapter listAdp = new PackageListAdapter(getActivity(), packages, R.layout.package_list_single_view);
-                listView.setAdapter(listAdp);
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });
-    }
 
 }

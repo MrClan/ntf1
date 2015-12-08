@@ -51,20 +51,20 @@ public class UsersetupActivity extends AppCompatActivity {
 
     public void OnClick(View view)
     {
-        String username = autoCompleteNewUserTv.getText().toString();
-        if(TextUtils.isEmpty(username))
-        {
-            autoCompleteNewUserTv.setError("Username cannot be empty");
-            autoCompleteNewUserTv.requestFocus();
-        }
-        else {
-            switch (view.getId()) {
-                case R.id.dummy_button:
-                    F.CheckIfUserExists(username, mControlsView, autoCompleteNewUserTv, this, false);
-                    break;
-                case R.id.btnLogin:
-                    F.CheckIfUserExists(username, mControlsView, autoCompleteNewUserTv, this, true);
-                    break;
+        if(U.IsOnline()) {
+            String username = autoCompleteNewUserTv.getText().toString();
+            if (TextUtils.isEmpty(username)) {
+                autoCompleteNewUserTv.setError("Username cannot be empty");
+                autoCompleteNewUserTv.requestFocus();
+            } else {
+                switch (view.getId()) {
+                    case R.id.dummy_button:
+                        F.CheckIfUserExists(username, mControlsView, autoCompleteNewUserTv, this, false);
+                        break;
+                    case R.id.btnLogin:
+                        F.CheckIfUserExists(username, mControlsView, autoCompleteNewUserTv, this, true);
+                        break;
+                }
             }
         }
     }

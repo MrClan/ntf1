@@ -58,7 +58,6 @@ public class Dashboard extends Fragment {
         advToolbar.setNavigationOnClickListener(new View.OnClickListener() {
                                                     @Override
                                                     public void onClick(View v) {
-                                                        Toast.makeText(getActivity(), "Nav drawer clicked", Toast.LENGTH_SHORT).show();
                                                         DrawerLayout drawer = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
                                                         if (drawer.isDrawerOpen(GravityCompat.START)) {
                                                             drawer.closeDrawer(GravityCompat.START);

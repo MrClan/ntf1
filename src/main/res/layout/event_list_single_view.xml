@@ -76,30 +76,6 @@
                 android:textColor="#ffffff" />
         </LinearLayout>
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="10">
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:id="@+id/ivInterested"
-                    android:background="@drawable/event_add_to_fav"
-                    android:layout_alignTop="@+id/imgEventPic"
-                    android:layout_alignRight="@+id/imgEventPic"
-                    android:layout_alignEnd="@+id/imgEventPic"
-                    android:layout_gravity="center" />
-            </LinearLayout>
-        </LinearLayout>
-
     </LinearLayout>
 
     <ImageView

@@ -44,7 +44,7 @@ public class LoginPage extends Fragment
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Signing In Clicked", Toast.LENGTH_LONG).show();
+
             }
         });
 
@@ -53,7 +53,7 @@ public class LoginPage extends Fragment
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(getActivity(), "Facebook Login Clicked", Toast.LENGTH_LONG).show();
+
             }
         });
 
@@ -62,7 +62,7 @@ public class LoginPage extends Fragment
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(getActivity(), "Google Login Clicked", Toast.LENGTH_LONG).show();
+
             }
         });
 

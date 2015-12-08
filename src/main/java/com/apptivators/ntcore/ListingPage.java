@@ -21,11 +21,13 @@ import com.apptivators.ntcore.Utils.U;
  * Created on 12/7/2015
  * By : $(USER)<suchan211@gmail.com>
  */
-public class PackageListingPage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
+public class ListingPage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
 {
 
     TextView txtNavHeaderWelcome;
     MenuItem nav_login;
+    String dataType;
+    String viewType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,10 +54,26 @@ public class PackageListingPage extends AppCompatActivity implements NavigationV
         txtNavHeaderWelcome.setText(txtNavHeaderWelcome.getText() + " @ " + username);
 
 
+
+        dataType = getIntent().getStringExtra("dataType");
+        viewType = getIntent().getStringExtra("viewType");
         //POPULATE THE FIRST PAGE AS FEATURED PAGE
-        Fragment fragment = new PackageActivity();
+        Fragment fragment = null;
+
+        switch(viewType)
+        {
+            case "Packages":
+                fragment = new PackageActivity();
+                break;
+            case "Events":
+            default:
+                fragment = new EventsActivity();
+                break;
+        }
+
+
         Bundle args = new Bundle();
-        args.putString("dataType", "Events");
+        args.putString("dataType", dataType);
         fragment.setArguments(args);
 
         // Insert the fragment by replacing any existing fragment
@@ -170,7 +188,6 @@ public class PackageListingPage extends AppCompatActivity implements NavigationV
             fragmentManager.beginTransaction()
                     .replace(R.id.frameLayout, fragment)
                     .commit();
-            U.ShowToast(title);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

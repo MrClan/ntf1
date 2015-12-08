@@ -42,10 +42,14 @@ public class EventListAdapter extends ArrayAdapter<Event> {
         TextView tvCost = (TextView) view.findViewById(R.id.lblEventCost);
         TextView tvVenue= (TextView) view.findViewById(R.id.lblEventVenueNTime);
 
+        ImageView ivPic = (ImageView) view.findViewById(R.id.imgEventPic);
+
         tvTitle.setText(event.getTitle());
         tvCost.setText(event.getCost());
         tvHost.setText(event.Host);
         tvVenue.setText(event.getCity());
+
+        U.LoadImage(view.getContext(), ivPic, event.getImgName());
 
 
         return view;

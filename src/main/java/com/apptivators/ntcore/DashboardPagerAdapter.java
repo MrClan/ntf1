@@ -30,7 +30,7 @@ public class DashboardPagerAdapter extends FragmentPagerAdapter  {
     @Override
     public Fragment getItem(int position) {
         if (position == 0)
-            return FragDestination.newInstance(null); // pass the class of activity where we are supposed to navigate to on click of gridView item
+            return FragDestination.newInstance(); // pass the class of activity where we are supposed to navigate to on click of gridView item
         else if (position == 1)
             return FragTransportation.newInstance(null);
         else if (position == 2)
@@ -38,7 +38,7 @@ public class DashboardPagerAdapter extends FragmentPagerAdapter  {
         else if (position == 3)
             return FragPackage.newInstance(null);
         if (position == 4)
-            return FragEvent.newInstance(null);
+            return FragEvent.newInstance();
         else
             return FragFacility.newInstance(null);
     }

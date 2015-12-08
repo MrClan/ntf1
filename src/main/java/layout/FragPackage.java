@@ -13,10 +13,8 @@ import android.widget.Toast;
 
 import com.apptivators.ntcore.ImageAdapter;
 import com.apptivators.ntcore.Models.TripType;
-import com.apptivators.ntcore.PackageActivity;
-import com.apptivators.ntcore.PackageListingPage;
+import com.apptivators.ntcore.ListingPage;
 import com.apptivators.ntcore.R;
-import com.apptivators.ntcore.Utils.SquareImageAdapter;
 
 /**
  * Created on 12/7/2015
@@ -73,8 +71,7 @@ public class FragPackage extends Fragment
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
-                Toast.makeText(curActivity, "" + position,
-                        Toast.LENGTH_SHORT).show();
+
 
                 if (targetActivity != null) {
                     startActivity(new Intent(view.getContext(), targetActivity));
@@ -89,50 +86,44 @@ public class FragPackage extends Fragment
     private void OnMenuButtonClicked(int position)
     {
         Activity ctx = getActivity();
-        Intent i = null;
+        Intent i = new Intent(ctx, ListingPage.class);
         switch (position)
         {
             case 0:
-                i = new Intent(ctx, PackageListingPage.class);
                 i.putExtra("dataType", TripType.ADVENTURE);
                 break;
             case 1:
-                i = new Intent(ctx, PackageListingPage.class);
                 i.putExtra("dataType", TripType.CASUAL);
                 break;
             case 2:
-                i = new Intent(ctx, PackageListingPage.class);
                 i.putExtra("dataType", TripType.EXPLORING);
                 break;
             case 3:
-                i = new Intent(ctx, PackageListingPage.class);
                 i.putExtra("dataType", TripType.FEATURED);
                 break;
             case 4:
-                i = new Intent(ctx, PackageListingPage.class);
                 i.putExtra("dataType", TripType.HIKING);
                 break;
             case 5:
-                i = new Intent(ctx, PackageListingPage.class);
                 i.putExtra("dataType", TripType.MOUNTAINEERING);
                 break;
             case 6:
-                i = new Intent(ctx, PackageListingPage.class);
                 i.putExtra("dataType", TripType.SOCIAL);
                 break;
             case 7:
-                i = new Intent(ctx, PackageListingPage.class);
                 i.putExtra("dataType", TripType.ROMANTIC);
                 break;
             case 8:
-                i = new Intent(ctx, PackageListingPage.class);
                 i.putExtra("dataType", TripType.FESTIVAL);
                 break;
             default:
-                i = new Intent(ctx, PackageListingPage.class);
                 i.putExtra("dataType", TripType.ADVENTURE);
                 break;
         }
-        ctx.startActivity(i);
+
+        if(i!= null) {
+            i.putExtra("viewType", "Packages");
+            ctx.startActivity(i);
+        }
     }
 }

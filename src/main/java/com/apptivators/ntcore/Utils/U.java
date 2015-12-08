@@ -7,6 +7,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.view.View;
 import android.widget.ImageView;
@@ -108,6 +110,15 @@ public class U {
                 .load(imgUrl)
                 .centerCrop()
                 .into(iv);
+    }
+
+    public static boolean IsOnline() {
+        ConnectivityManager connMgr = (ConnectivityManager) c.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        boolean status = networkInfo != null && networkInfo.isConnected();
+        if(!status)
+            ShowAlert("Please make sure that you are connected to internet.");
+        return (status);
     }
 
 

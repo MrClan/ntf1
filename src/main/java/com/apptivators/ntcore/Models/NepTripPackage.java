@@ -11,6 +11,7 @@ public class NepTripPackage {
     private String budgettype;
     private String categories;
     private String city;
+    private String city2;
     private String cost;
     private String description;
     private String duration;
@@ -18,6 +19,10 @@ public class NepTripPackage {
     private String transportationmode;
     private String transportationwithincity;
     private String triproute;
+    private String imgName;
+    private String imgName2;
+    private String imgName3;
+    private String accomodation2;
     private String day1;
     private String day2;
     private String day3;
@@ -43,15 +48,18 @@ public class NepTripPackage {
     private String day23;
     private String day24;
     private String day25;
-    private String imgName;
-    private String imgName2;
-    private String imgName3;
+
+
+
+
+    public String getCity2() {
+        return city2;
+    }
 
     public String getAccomodation2() {
         return accomodation2;
     }
 
-    private String accomodation2;
 
     public String getImgName() {
         return imgName;
