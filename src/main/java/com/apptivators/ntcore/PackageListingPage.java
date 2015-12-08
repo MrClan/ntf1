@@ -21,7 +21,7 @@ import com.apptivators.ntcore.Utils.U;
  * Created on 12/7/2015
  * By : $(USER)<suchan211@gmail.com>
  */
-public class EventListingPage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
+public class PackageListingPage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
 {
 
     TextView txtNavHeaderWelcome;
