@@ -35,6 +35,8 @@ public class EventListingPage extends AppCompatActivity implements NavigationVie
         U.Intialize(this);
         U.c = this;
 
+
+        //INITIALIZE THE NAVIGATION DRAWER
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, null, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -44,13 +46,14 @@ public class EventListingPage extends AppCompatActivity implements NavigationVie
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        //POPULATE USERNAME IN THE DRAWER TAB
         String username = U.GetLocalUser();
         txtNavHeaderWelcome = (TextView) findViewById(R.id.txtNavHeaderWelcome);
         txtNavHeaderWelcome.setText(txtNavHeaderWelcome.getText() + " @ " + username);
 
 
         //POPULATE THE FIRST PAGE AS FEATURED PAGE
-        Fragment fragment = new EventsActivity();
+        Fragment fragment = new PackageActivity();
         Bundle args = new Bundle();
         args.putString("dataType", "Events");
         fragment.setArguments(args);
