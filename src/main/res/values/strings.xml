@@ -36,4 +36,39 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_dialogtest">dialogtest</string>
+
+    <!-- Category -->
+    <string-array name="category">
+        <item>Choose City</item>
+        <item>Kathmandu</item>
+        <item>Bhaktapur</item>
+        <item>Lalitpur</item>
+        <item>Janakpur</item>
+        <item>Karnali</item>
+        <item>Mustang</item>
+        <item>Manag</item>
+        <item>Dolkha</item>
+        <item>Pokhara</item>
+        <item>Butwal</item>
+        <item>Chitwan</item>
+        <item>Gandaki</item>
+        <item>Nagarkot</item>
+    </string-array>
+
+    <string-array name="date">
+        <item>Choose Date</item>
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>Auguest</item>
+        <item>September</item>
+        <item>October</item>
+        <item>Novenber</item>
+        <item>December</item>
+
+    </string-array>
 </resources>

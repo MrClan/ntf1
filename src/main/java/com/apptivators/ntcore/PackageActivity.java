@@ -13,10 +13,12 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
 import com.apptivators.ntcore.Adapters.CityListAdapter;
@@ -39,6 +41,9 @@ public class PackageActivity extends Fragment {
     String dataType;
     View view;
     Spinner sCity;
+    String[] cityCategory=null;
+    String[] dateCategory= null;
+    Toolbar toolbar=null;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -55,9 +60,58 @@ public class PackageActivity extends Fragment {
         //SETUP THE TOOLBAR
         setupToolbar();
 
+        //SETUP THE FILTER TOOLBAR
+        setupFilterToolbar();
+
         //LOAD TEMP DATA
         LoadListData();
         return view;
+    }
+
+    private void setupFilterToolbar() {
+        cityCategory = getResources().getStringArray(R.array.category);
+        dateCategory = getResources().getStringArray(R.array.date);
+        toolbar = (Toolbar) view.findViewById(R.id.toolbar);
+
+
+        SpinnerAdapter spinnerCityAdapter = ArrayAdapter.createFromResource(getActivity().getApplicationContext(), R.array.category, R.layout.spinner_dropdown_item);
+        SpinnerAdapter spinnerDateAdapter = ArrayAdapter.createFromResource(getActivity().getApplicationContext(), R.array.date, R.layout.spinner_dropdown_item);
+
+        Spinner citySpinner = new Spinner(getActivity());
+        citySpinner.setAdapter(spinnerCityAdapter);
+        toolbar.addView(citySpinner, 0);
+
+        Spinner dateSpinner = new Spinner(getActivity());
+        dateSpinner.setAdapter(spinnerDateAdapter);
+        toolbar.addView(dateSpinner, 0);
+
+        citySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getActivity(),
+                        "you selected: " + cityCategory[position],
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        dateSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getActivity(),
+                        "you selected: " + dateCategory[position],
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     private void setupToolbar()

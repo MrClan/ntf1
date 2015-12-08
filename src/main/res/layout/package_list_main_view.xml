@@ -15,7 +15,17 @@
         android:titleTextAppearance="@color/white"
         android:background="?attr/colorPrimary"></android.support.v7.widget.Toolbar>
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:background="@color/backgroundDark"
+        android:minHeight="?attr/actionBarSize" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/colorPrimary"></LinearLayout>
     <ListView
         android:id="@+id/listPackageView"
         android:layout_width="fill_parent"
