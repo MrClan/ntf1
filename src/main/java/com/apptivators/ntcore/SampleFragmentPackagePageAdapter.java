@@ -8,7 +8,7 @@ import com.astuetz.PagerSlidingTabStrip;
 
 public class SampleFragmentPackagePageAdapter extends FragmentPagerAdapter implements PagerSlidingTabStrip.IconTabProvider {
     final int PAGE_COUNT = 4;
-    private int tabIcons[] = {R.drawable.img_btn_home, R.drawable.img_btn_gallery, R.drawable.img_btn_map, R.drawable.img_btn_calendar, R.drawable.img_btn_contact};
+    private int tabIcons[] = {R.drawable.img_btn_home, R.drawable.img_btn_accomodation, R.drawable.img_btn_map, R.drawable.img_btn_calendar, R.drawable.img_btn_contact};
 
     public SampleFragmentPackagePageAdapter(FragmentManager fm) {
         super(fm);
@@ -23,15 +23,15 @@ public class SampleFragmentPackagePageAdapter extends FragmentPagerAdapter imple
     public Fragment getItem(int position)
     {
         if(position==0)
-            return eventDetailDescription_Fragment.newInstance(position + 1);
+            return packageDetailDescription_Fragment.newInstance(position + 1);
         else if(position==1)
-            return eventDetailGallery_Fragment.newInstance(position + 1);
+            return packageDetailAccomodation_Fragment.newInstance(position + 1);
         else if(position==2)
-            return eventDetailMap_Fragment.newInstance(position + 1);
+            return packageDetailMap_Fragment.newInstance(position + 1);
         else if(position==3)
-            return eventDetailCalendar_Fragment.newInstance(position + 1);
+            return packageDetailCalendar_Fragment.newInstance(position + 1);
         else
-            return eventDetailGallery_Fragment.newInstance(position + 1);
+            return packageDetailDescription_Fragment.newInstance(position + 1);
     }
 
     @Override

@@ -56,7 +56,7 @@ public class PackageDetailActivity extends AppCompatActivity
 
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        viewPager.setAdapter(new SampleFragmentPagerAdapter(getSupportFragmentManager()));
+        viewPager.setAdapter(new SampleFragmentPackagePageAdapter(getSupportFragmentManager()));
 
 
         PagerSlidingTabStrip tabsStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
