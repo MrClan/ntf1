@@ -36,7 +36,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Casual"
-                    android:id="@+id/textView5"
+                    android:id="@+id/lblPackageType"
                     android:layout_gravity="center" />
             </LinearLayout>
         </LinearLayout>
@@ -61,7 +61,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Delux"
-                    android:id="@+id/textView6"
+                    android:id="@+id/lblPackageBudgetType"
                     android:layout_gravity="center" />
             </LinearLayout>
         </LinearLayout>
@@ -86,7 +86,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Rs. 32,000"
-                    android:id="@+id/textView6"
+                    android:id="@+id/lblPackageCost"
                     android:layout_gravity="center" />
             </LinearLayout>
         </LinearLayout>
@@ -120,7 +120,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="Sauraha Package Tours (4days / 3 nights)"
-                    android:id="@+id/title"
+                    android:id="@+id/lblPackageTitle"
                     android:textSize="15sp" />
 
                 <TextView
@@ -128,7 +128,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="Abc Travel Tours Pvt. Ltd."
-                    android:id="@+id/lblHost"
+                    android:id="@+id/lblPackageHost"
                     android:textSize="15sp" />
 
                 <TextView
@@ -136,7 +136,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="      The Chitwan region has had a long history of conservation. For many years it was the Royal hunting grounds for the Kings and dignitaries of Nepal and therefore was not hunted by the general public. It did however become a favorite spot for big game safari hunters in the late nineteenth and early to mid-twentieth centuries. This was coupled with a surge in local human populations following the development of anti-malaria medicines in the mid-twentieth century."
-                    android:id="@+id/txtDescription"
+                    android:id="@+id/lblPackageDescription"
                     android:textSize="15sp"
                     android:textStyle="italic"
                     android:layout_marginTop="5dp" />

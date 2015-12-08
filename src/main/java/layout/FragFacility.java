@@ -13,6 +13,7 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 import com.apptivators.ntcore.ImageAdapter;
+import com.apptivators.ntcore.PackageActivity;
 import com.apptivators.ntcore.R;
 import com.apptivators.ntcore.Utils.SquareImageAdapter;
 import com.apptivators.ntcore.dialogtest;
@@ -59,15 +60,10 @@ public class FragFacility extends Fragment
                 // start target activity on click
             }
         });
-
-//        ((Button)view.findViewById(R.id.btnDialog)).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(view.getContext(), dialogtest.class));
-//            }
-//        });
-
+        
 
         return view;
     }
+
+
 }
