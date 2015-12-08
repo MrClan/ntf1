@@ -150,8 +150,8 @@ public class PackageActivity extends Fragment {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         String food = String.valueOf(parent.getItemAtPosition(position));
                         Toast.makeText(getActivity(), food, Toast.LENGTH_LONG).show();
-                        //Intent i = new Intent(getActivity(), EventDetailActivity.class);
-                        //startActivity(i);
+                        Intent i = new Intent(getActivity(), PackageDetailActivity.class);
+                        startActivity(i);
                     }
                 }
         );
