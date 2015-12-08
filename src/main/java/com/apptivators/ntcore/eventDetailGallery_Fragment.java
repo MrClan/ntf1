@@ -17,6 +17,29 @@ public class eventDetailGallery_Fragment extends Fragment
     GridView gridview;
     public static final String ARG_PAGE = "ARG_Page";
     private int mPage;
+    private Integer[] mThumbIds = {
+            R.drawable.img_featured,
+            R.drawable.img_adventure,
+            R.drawable.img_casual,
+            R.drawable.img_romantic,
+            R.drawable.img_hiking,
+            R.drawable.img_mountaineering,
+            R.drawable.img_exploring,
+            R.drawable.img_social,
+            R.drawable.img_festival
+    };
+
+    private String[] mThumbInfo = {
+            "Featured",
+            "Adventure",
+            "Casual",
+            "Romantic",
+            "Hiking",
+            "Mountaineering",
+            "Exploring",
+            "Social",
+            "Festival",
+    };
 
     public static eventDetailGallery_Fragment newInstance(int page) {
         Bundle args = new Bundle();
@@ -36,7 +59,7 @@ public class eventDetailGallery_Fragment extends Fragment
     {
         View v = inflater.inflate(R.layout.event_detail_gallery_fragment,container,false);
         gridview = (GridView)v.findViewById(R.id.gridview);
-        gridview.setAdapter(new ImageAdapter(v.getContext(),0));
+        gridview.setAdapter(new ImageAdapter(v.getContext(),0,mThumbIds,mThumbInfo));
         return v;
     }
 }

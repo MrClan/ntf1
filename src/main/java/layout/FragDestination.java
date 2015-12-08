@@ -14,7 +14,7 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 import com.apptivators.ntcore.CityListActivity;
-import com.apptivators.ntcore.EventListingPage;
+import com.apptivators.ntcore.PackageListingPage;
 import com.apptivators.ntcore.R;
 import com.apptivators.ntcore.Utils.F;
 import com.apptivators.ntcore.Utils.SquareImageAdapter;
@@ -63,7 +63,7 @@ public class FragDestination extends Fragment {
                         break;
                     case 2:
                         // load romantic city list
-                        Intent i1 = new Intent(ctx, EventListingPage.class);
+                        Intent i1 = new Intent(ctx, PackageListingPage.class);
                         i1.putExtra("dataType", "RomanticCities");
                         ctx.startActivity(i1);
                         break;

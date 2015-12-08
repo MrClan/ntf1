@@ -27,7 +27,29 @@ public class FragFacility extends Fragment
 
     static Class targetActivity = null;
     private int mPage;
+    private Integer[] mThumbIds = {
+            R.drawable.img_featured,
+            R.drawable.img_adventure,
+            R.drawable.img_casual,
+            R.drawable.img_romantic,
+            R.drawable.img_hiking,
+            R.drawable.img_mountaineering,
+            R.drawable.img_exploring,
+            R.drawable.img_social,
+            R.drawable.img_festival
+    };
 
+    private String[] mThumbInfo = {
+            "Featured",
+            "Adventure",
+            "Casual",
+            "Romantic",
+            "Hiking",
+            "Mountaineering",
+            "Exploring",
+            "Social",
+            "Festival",
+    };
     public static FragFacility newInstance(Class tgtActivity) {
         Bundle args = new Bundle();
         FragFacility fragment = new FragFacility();
@@ -45,7 +67,7 @@ public class FragFacility extends Fragment
         final View view = inflater.inflate(R.layout.frag_facility, container, false);
         final Activity curActivity = getActivity();
         GridView gridview = (GridView) view.findViewById(R.id.gvFacility);
-        gridview.setAdapter(new ImageAdapter(curActivity,1));
+        gridview.setAdapter(new ImageAdapter(curActivity,1,mThumbIds,mThumbInfo));
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,

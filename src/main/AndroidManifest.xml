@@ -32,7 +32,7 @@
             android:label="EventDetailActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".EventListingPage"
+            android:name=".PackageListingPage"
             android:label="Event Listing Page"
             android:screenOrientation="portrait" />
         <activity
