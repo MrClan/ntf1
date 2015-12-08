@@ -26,8 +26,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text=" About the Event"
-                android:id="@+id/title"
+                android:text=" Event Description"
+                android:textStyle="bold"
+                android:id="@+id/eventTitle"
                 android:textSize="15sp" />
 
             <TextView

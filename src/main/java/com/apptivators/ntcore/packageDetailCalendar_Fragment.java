@@ -13,15 +13,18 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.apptivators.ntcore.Models.NepTripPackage;
+
 
 public class packageDetailCalendar_Fragment extends Fragment
 {
     public static final String ARG_PAGE = "ARG_Page";
     private int mPage;
     ListView listView;
-
-    public static packageDetailCalendar_Fragment newInstance(int page) {
+    static NepTripPackage nepTripPackage;
+    public static packageDetailCalendar_Fragment newInstance(int page, NepTripPackage pck) {
         Bundle args = new Bundle();
+        nepTripPackage = pck;
         packageDetailCalendar_Fragment fragment = new packageDetailCalendar_Fragment();
         fragment.setArguments(args);
         return fragment;

@@ -10,12 +10,14 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.apptivators.ntcore.HomePage;
 import com.apptivators.ntcore.MainPage;
+import com.apptivators.ntcore.Models.NepTripPackage;
 import com.apptivators.ntcore.Models.TripType;
 import com.apptivators.ntcore.Models.User;
 import com.apptivators.ntcore.UsersetupActivity;
@@ -33,19 +35,20 @@ public class U {
     public static Context c;
     private final static String settingsFileName = "App_Settings";
     private final static String userNameKey = "userkey";
+    private final static String pckBuyDetailsKey = "pckBuyDetailsKey";
 
 
-    public final static Map<TripType,String> TRIP_TYPE_STRING_MAP = new HashMap<TripType, String>(){
+    public final static Map<TripType, String> TRIP_TYPE_STRING_MAP = new HashMap<TripType, String>() {
         {
-            put(TripType.ADVENTURE,"Adventure");
-            put(TripType.ROMANTIC,"Roamntic");
-            put(TripType.CASUAL,"Casual");
-            put(TripType.EXPLORING,"Exploring");
-            put(TripType.FEATURED,"Featured");
-            put(TripType.MOUNTAINEERING,"Mountaineering");
-            put(TripType.SOCIAL,"Social");
-            put(TripType.HIKING,"Hiking");
-            put(TripType.FESTIVAL,"Festival");
+            put(TripType.ADVENTURE, "Adventure");
+            put(TripType.ROMANTIC, "Roamntic");
+            put(TripType.CASUAL, "Casual");
+            put(TripType.EXPLORING, "Exploring");
+            put(TripType.FEATURED, "Featured");
+            put(TripType.MOUNTAINEERING, "Mountaineering");
+            put(TripType.SOCIAL, "Social");
+            put(TripType.HIKING, "Hiking");
+            put(TripType.FESTIVAL, "Festival");
         }
     };
 
@@ -53,10 +56,10 @@ public class U {
         // check sharedPreferences for existing user details
         // if not found, prompt the user for profile setup
         String username = GetLocalUser();
-            if (!username.isEmpty())
-                return true;
-            else
-                return false;
+        if (!username.isEmpty())
+            return true;
+        else
+            return false;
     }
 
     public static String GetLocalUser() {
@@ -64,12 +67,55 @@ public class U {
         return preferences.getString(userNameKey, "");
     }
 
+    public static boolean GetBuyStatus(NepTripPackage nepTripPackage) {
+        boolean buyStatus = false;
+        if(nepTripPackage != null) {
+            String packageTitle = nepTripPackage.getTitle();
+            String buyDetailsKey = GetBuyString();
+            if (!TextUtils.isEmpty(buyDetailsKey)) {
+                for (String s : TextUtils.split(buyDetailsKey, ";;;")) {
+                    if (s.equalsIgnoreCase(packageTitle)) {
+                        buyStatus = true;
+                        break;
+                    }
+                }
+            }
+        }
+        return buyStatus;
+    }
+
+    private static String GetBuyString()
+    {
+        SharedPreferences preferences = c.getSharedPreferences(settingsFileName, c.MODE_PRIVATE);
+        return  preferences.getString(pckBuyDetailsKey, "");
+    }
+
+
+    public static void SetLocalUser(User user) {
+        SharedPreferences preferences = c.getSharedPreferences(settingsFileName, c.MODE_PRIVATE);
+        SharedPreferences.Editor userKeyEditor = preferences.edit();
+        userKeyEditor.putString(userNameKey, user.getUsername());
+        userKeyEditor.apply();
+    }
+
+
+    public static void SetBuyStatus(NepTripPackage nepTripPackage) {
+        if(nepTripPackage != null) {
+            SharedPreferences preferences = c.getSharedPreferences(settingsFileName, c.MODE_PRIVATE);
+            SharedPreferences.Editor keyEditor = preferences.edit();
+            String curBuyString = GetBuyString();
+            if(!curBuyString.toLowerCase().contains(nepTripPackage.getTitle().toLowerCase())) {
+                keyEditor.putString(pckBuyDetailsKey, curBuyString + ";;;" + nepTripPackage.getTitle());
+                keyEditor.apply();
+            }
+        }
+    }
+
     public static void GoToHome() {
         GoToActivity(HomePage.class);
     }
 
-    public static void GoToProfileSetup()
-    {
+    public static void GoToProfileSetup() {
         GoToActivity(UsersetupActivity.class);
     }
 
@@ -85,27 +131,17 @@ public class U {
         //F.AddTrips(); ONE TIME METHOD
     }
 
-    public static void ShowToast(String msg)
-    {
+    public static void ShowToast(String msg) {
         Toast.makeText(c, msg, Toast.LENGTH_SHORT).show();
     }
 
-    public static void ShowAlert(String msg)
-    {
+    public static void ShowAlert(String msg) {
         AlertDialog.Builder alert = new AlertDialog.Builder(c);
         alert.setMessage(msg);
         alert.show();
     }
 
-    public static void SetLocalUser(User user) {
-        SharedPreferences preferences = c.getSharedPreferences(settingsFileName, c.MODE_PRIVATE);
-        SharedPreferences.Editor userKeyEditor = preferences.edit();
-        userKeyEditor.putString(userNameKey, user.getUsername());
-        userKeyEditor.apply();
-    }
-
-    public static void LoadImage(Context ctx, ImageView iv, String imgUrl)
-    {
+    public static void LoadImage(Context ctx, ImageView iv, String imgUrl) {
         Glide.with(ctx)
                 .load(imgUrl)
                 .centerCrop()
@@ -116,7 +152,7 @@ public class U {
         ConnectivityManager connMgr = (ConnectivityManager) c.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         boolean status = networkInfo != null && networkInfo.isConnected();
-        if(!status)
+        if (!status)
             ShowAlert("Please make sure that you are connected to internet.");
         return (status);
     }
@@ -157,8 +193,9 @@ public class U {
 
     public static void ClearLocalUser() {
         SharedPreferences preferences = c.getSharedPreferences(settingsFileName, c.MODE_PRIVATE);
-        SharedPreferences.Editor userKeyEditor = preferences.edit();
-        userKeyEditor.putString(userNameKey, "");
-        userKeyEditor.apply();
+        SharedPreferences.Editor settingsEditor = preferences.edit();
+        settingsEditor.putString(userNameKey, "");
+        settingsEditor.putString(pckBuyDetailsKey, ""); // TODO: MAINTAIN BUY HSITORY EVEN ON USER LOGOUT -> PUSH IT TO THE SERVER MAYBE
+        settingsEditor.apply();
     }
 }

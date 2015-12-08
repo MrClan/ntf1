@@ -1,10 +1,12 @@
 package com.apptivators.ntcore.Models;
 
+import java.io.Serializable;
+
 /**
  * Created by Pratik on 12/8/2015.
  */
 
-public class NepTripPackage {
+public class NepTripPackage implements Serializable{
     public String Host;
     private String title;
     private String accomodation;

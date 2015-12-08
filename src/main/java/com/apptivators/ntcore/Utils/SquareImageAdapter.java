@@ -94,15 +94,12 @@ public class SquareImageAdapter extends BaseAdapter {
 
     private Integer[] mThumbIdsTransportation =
             {
-                    R.drawable.img_menu_transportation_plane,
-                    R.drawable.img_menu_transportation_bike,
+                    R.drawable.flight,
+                    R.drawable.micro_bus_4,
+                    R.drawable.taxi1,
+                    R.drawable.sajha_yatayat,
                     R.drawable.img_menu_transportation_bus,
-                    R.drawable.img_menu_transportation_cycle,
-                    R.drawable.img_menu_transportation_jeep,
-                    R.drawable.img_menu_transportation_rickshaw,
-                    R.drawable.img_menu_transportation_taxi,
-                    R.drawable.img_menu_transportation_tempo,
-                    R.drawable.img_menu_transportation_walking
+                    R.drawable.img_menu_transportation_taxi
             };
 
     private Integer[] mThumbIdsAccomodation =

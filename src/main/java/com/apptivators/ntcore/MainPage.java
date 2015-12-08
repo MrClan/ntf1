@@ -1,6 +1,7 @@
 package com.apptivators.ntcore;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -18,15 +19,26 @@ import com.firebase.client.Firebase;
 
 public class MainPage extends AppCompatActivity {
 
+    // Splash screen timer
+    private static int pauseDuration = 2400;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_page);
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
 
         U.Intialize(this);
+        new Handler().postDelayed(
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        onClick(null);
+                    }
+                }
+                , pauseDuration);
 
-        ImageButton btnWallpaper = (ImageButton) findViewById(R.id.btnWallpaper);
     }
 
     public void onClick(View v)
@@ -35,13 +47,11 @@ public class MainPage extends AppCompatActivity {
         // if user not already setup, prompt the user to setup their basic profile
         if(U.CheckUserStatus()) {
             U.GoToHome();
-            finish();
         }
-
         else {
             U.GoToProfileSetup();
-            finish();
         }
+        finish();
     }
 
     @Override

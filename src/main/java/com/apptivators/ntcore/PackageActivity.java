@@ -1,5 +1,6 @@
 package com.apptivators.ntcore;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -52,8 +53,11 @@ public class PackageActivity extends Fragment {
                 new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        String food = String.valueOf(parent.getItemAtPosition(position));
+                        NepTripPackage curItem = (NepTripPackage)(parent.getItemAtPosition(position));
                         Intent i = new Intent(getActivity(), PackageDetailActivity.class);
+                        Bundle b = new Bundle();
+                        b.putSerializable("curItem", curItem);
+                        i.putExtras(b);
                         startActivity(i);
                     }
                 }
@@ -90,8 +94,11 @@ public class PackageActivity extends Fragment {
                         packages.add(p);
                     }
 
-                    PackageListAdapter listAdp = new PackageListAdapter(getActivity(), packages, R.layout.package_list_single_view);
-                    listView.setAdapter(listAdp);
+                    Activity act = getActivity();
+                    if(act!= null) {
+                        PackageListAdapter listAdp = new PackageListAdapter(act, packages, R.layout.package_list_single_view);
+                        listView.setAdapter(listAdp);
+                    }
                 }
 
                 @Override
@@ -117,6 +124,7 @@ public class PackageActivity extends Fragment {
 
         Spinner dateSpinner = new Spinner(getActivity());
         dateSpinner.setAdapter(spinnerDateAdapter);
+        dateSpinner.setVisibility(View.INVISIBLE);
         toolbar.addView(dateSpinner, 0);
 
         citySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

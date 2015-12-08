@@ -7,6 +7,11 @@
     android:padding="10dp"
     android:weightSum="100">
 
+    <Button android:layout_height="48dp"
+        android:layout_width="match_parent"
+        android:text="BUY PACKAGE"
+        android:id="@+id/btnBuy"
+        android:onClick="BuyPackage"/>
 
     <LinearLayout
         android:orientation="horizontal"
@@ -60,7 +65,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Delux"
+                    android:text="Deluxe"
                     android:id="@+id/lblPackageBudgetType"
                     android:layout_gravity="center" />
             </LinearLayout>

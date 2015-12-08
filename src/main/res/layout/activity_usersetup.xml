@@ -19,7 +19,8 @@
         android:textSize="50sp"
         android:textStyle="bold"
         android:scaleType="centerCrop"
-        android:src="@drawable/wallpaper"/>
+        android:src="@drawable/wp_login"
+        android:alpha="0.75" />
 
 
     <!-- This FrameLayout insets its children based on system windows using
@@ -44,6 +45,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="24dp"
+                    android:text="Neptrip Quick Signup" />
+
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -57,7 +65,8 @@
                         android:inputType="text"
                         android:maxLength="24"
                         android:maxLines="1"
-                        android:singleLine="true" />
+                        android:singleLine="true"
+                        android:textColor="#fff" />
 
                 </android.support.design.widget.TextInputLayout>
 

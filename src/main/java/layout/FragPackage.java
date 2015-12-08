@@ -23,7 +23,6 @@ import com.apptivators.ntcore.R;
 public class FragPackage extends Fragment
 {
 
-    static Class targetActivity = null;
     private int mPage;
     private Integer[] mThumbIds = {
             R.drawable.img_featured,
@@ -49,11 +48,10 @@ public class FragPackage extends Fragment
             "Festival",
     };
 
-    public static FragPackage newInstance(Class tgtActivity) {
+    public static FragPackage newInstance() {
         Bundle args = new Bundle();
         FragPackage fragment = new FragPackage();
         fragment.setArguments(args);
-        targetActivity = tgtActivity;
         return fragment;
     }
     @Override
@@ -72,12 +70,7 @@ public class FragPackage extends Fragment
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
 
-
-                if (targetActivity != null) {
-                    startActivity(new Intent(view.getContext(), targetActivity));
-                }
                 OnMenuButtonClicked(position);
-                // start target activity on click
             }
         });
         return view;

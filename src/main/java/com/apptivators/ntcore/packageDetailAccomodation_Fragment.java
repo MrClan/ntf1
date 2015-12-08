@@ -8,14 +8,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.apptivators.ntcore.Models.NepTripPackage;
+
 
 public class packageDetailAccomodation_Fragment extends Fragment
 {
     public static final String ARG_PAGE = "ARG_Page";
     private int mPage;
-
-    public static packageDetailAccomodation_Fragment newInstance(int page) {
+    static NepTripPackage nepTripPackage;
+    public static packageDetailAccomodation_Fragment newInstance(int page, NepTripPackage pck) {
         Bundle args = new Bundle();
+        nepTripPackage = pck;
         packageDetailAccomodation_Fragment fragment = new packageDetailAccomodation_Fragment();
         fragment.setArguments(args);
         return fragment;

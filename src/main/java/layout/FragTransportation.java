@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import com.apptivators.ntcore.ImageAdapter;
 import com.apptivators.ntcore.R;
 import com.apptivators.ntcore.Utils.SquareImageAdapter;
 
@@ -35,13 +36,33 @@ public class FragTransportation extends Fragment
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
+    private Integer[] mThumbIdsTransportation =
+            {
+                    R.drawable.flight,
+                    R.drawable.micro_bus_4,
+                    R.drawable.taxi1,
+                    R.drawable.sajha_yatayat,
+                    R.drawable.img_menu_transportation_bus,
+                    R.drawable.img_menu_transportation_taxi
+            };
+
+    private String[] mThumbIdsTransportationNames =
+            {
+                    "Book a flights",
+                    "Reserve a micro",
+                    "Hire a taxi",
+                    "Buy bus tickets",
+                    "Reserve a bus",
+                    "Rent cab for a day"
+            };
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.frag_transportation, container, false);
         final Activity curActivity = getActivity();
         GridView gridview = (GridView) view.findViewById(R.id.gvTransportation);
-        gridview.setAdapter(new SquareImageAdapter(curActivity, ITEM_TYPE));
+        //gridview.setAdapter(new SquareImageAdapter(curActivity, ITEM_TYPE));
+        gridview.setAdapter(new ImageAdapter(curActivity, 1, mThumbIdsTransportation, mThumbIdsTransportationNames ));
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,

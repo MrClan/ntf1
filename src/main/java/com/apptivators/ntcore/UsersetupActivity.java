@@ -33,12 +33,12 @@ public class UsersetupActivity extends AppCompatActivity {
         mContentView = findViewById(R.id.fullscreen_content);
         autoCompleteNewUserTv = (AutoCompleteTextView)findViewById(R.id.username);
 
-
+        //toggle();
         // Set up the user interaction to manually show or hide the system UI.
         mContentView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                toggle();
+                //toggle();
             }
         });
 
@@ -149,12 +149,12 @@ public class UsersetupActivity extends AppCompatActivity {
         // Trigger the initial hide() shortly after the activity has been
         // created, to briefly hint to the user that UI controls
         // are available.
-        delayedHide(100);
+        //delayedHide(100);
     }
 
     private void toggle() {
         if (mVisible) {
-            hide();
+            show();
         }
         else
         {

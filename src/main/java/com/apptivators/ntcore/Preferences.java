@@ -32,8 +32,8 @@ public class Preferences extends Fragment
 
 
         //SET THE ACTIONBAR TITLE & ICON
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Setting");
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Setting");
+        //((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         //CHANGE THE FONT

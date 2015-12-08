@@ -8,14 +8,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.apptivators.ntcore.Models.NepTripPackage;
+
 
 public class packageDetailMap_Fragment extends Fragment
 {
     public static final String ARG_PAGE = "ARG_Page";
     private int mPage;
+    static NepTripPackage nepTripPackage;
 
-    public static packageDetailMap_Fragment newInstance(int page) {
+    public static packageDetailMap_Fragment newInstance(int page, NepTripPackage pck) {
         Bundle args = new Bundle();
+        nepTripPackage = pck;
         packageDetailMap_Fragment fragment = new packageDetailMap_Fragment();
         fragment.setArguments(args);
         return fragment;

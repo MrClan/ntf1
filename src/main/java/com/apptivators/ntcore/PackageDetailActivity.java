@@ -1,5 +1,8 @@
 package com.apptivators.ntcore;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -8,10 +11,13 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.apptivators.ntcore.Models.Event;
+import com.apptivators.ntcore.Models.NepTripPackage;
 import com.apptivators.ntcore.Models.Trip;
 import com.apptivators.ntcore.Utils.U;
 import com.astuetz.PagerSlidingTabStrip;
@@ -31,10 +37,13 @@ public class PackageDetailActivity extends AppCompatActivity
     @Bind(R.id.lblEventDetail)
     TextView lblEventDetail;
 
+    NepTripPackage pck = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        U.c = this;
 
         //getSupportActionBar().setTitle("Event Details");
         //getSupportActionBar().setHomeButtonEnabled(true);
@@ -45,18 +54,16 @@ public class PackageDetailActivity extends AppCompatActivity
         setupToolbar();
 
 
-/*        ButterKnife.bind(this);
-
+        ButterKnife.bind(this);
         Bundle b = this.getIntent().getExtras();
-        Trip trip = (Trip)b.getSerializable("curTrip");
-
-        lblTitle.setText(trip.getTitle());
-        lblEventDetail.setText("From " + trip.getStartTime() + " till " + trip.getEndTime() + " at " + trip.getVenue());
-        U.LoadImage(this, iv, trip.getImgName());*/
+        pck = (NepTripPackage)b.getSerializable("curItem");
+        lblTitle.setText(pck.getTitle());
+        lblEventDetail.setText("Duration: " + pck.getDuration());
+        U.LoadImage(this, iv, pck.getImgName());
 
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        viewPager.setAdapter(new SampleFragmentPackagePageAdapter(getSupportFragmentManager()));
+        viewPager.setAdapter(new SampleFragmentPackagePageAdapter(getSupportFragmentManager(), pck));
 
 
         PagerSlidingTabStrip tabsStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
@@ -64,6 +71,30 @@ public class PackageDetailActivity extends AppCompatActivity
         tabsStrip.setViewPager(viewPager);
         tabsStrip.setShouldExpand(false);
     }
+
+    public void BuyPackage(final View view)
+    {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setMessage("Buy this package ?");
+        alert.setCancelable(true);
+        alert.setPositiveButton("Buy", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                U.SetBuyStatus(pck);
+                ((Button)view).setText("PURCHASED");
+                view.setEnabled(false);
+                U.ShowToast("Package successfully purchased.");
+            }
+        });
+        alert.setNegativeButton("Not Now", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        alert.show();
+    }
+
 
     private void setupToolbar()
     {

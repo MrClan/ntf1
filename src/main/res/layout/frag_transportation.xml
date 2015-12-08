@@ -37,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Travel your own way"
+            android:text="Book your ride"
             android:id="@+id/textView3"
             android:textSize="15sp"
             android:textColor="#ffffff"
@@ -61,7 +61,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="12 Routes"
+                android:text="Available options"
                 android:id="@+id/textView4"
                 android:layout_gravity="center_horizontal"
                 android:textColor="#ffffff" />

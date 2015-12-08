@@ -104,29 +104,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         int id = item.getItemId();
         Fragment fragment = null;
         String title = null;
-        if (id == R.id.nav_menu_review) {
-            fragment = new EventsActivity();
-            title = "Featured Events";
-        } else if (id == R.id.nav_menu_review) {
-            fragment = new EventsActivity();
-            title = "Adventure Events";
-        } else if (id == R.id.nav_menu_review) {
-            fragment = new EventsActivity();
-            title = "Casual Events";
-        } else if (id == R.id.nav_menu_review) {
-            fragment = new EventsActivity();
-            title = "Exploring Events";
-        } else if (id == R.id.nav_menu_review) {
-            fragment = new EventsActivity();
-            title = "Hiking Events";
-        } else if (id == R.id.nav_menu_review) {
-            fragment = new EventsActivity();
-            Bundle args = new Bundle();
-            args.putString("title", "Mountaineering Events");
-        } else if (id == R.id.nav_menu_review) {
-            fragment = new EventsActivity();
-            title = "Romantic Events";
-        } else if (id == R.id.nav_setting) {
+        if (id == R.id.nav_setting) {
             fragment = new Preferences();
         }
         else if(id== R.id.nav_menu_dashboard)
