@@ -17,7 +17,9 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.apptivators.ntcore.Adapters.CityListAdapter;
+import com.apptivators.ntcore.Adapters.EventListAdapter;
 import com.apptivators.ntcore.Models.City;
+import com.apptivators.ntcore.Models.Event;
 import com.apptivators.ntcore.Models.Trip;
 import com.apptivators.ntcore.Models.TripType;
 import com.apptivators.ntcore.Utils.F;
@@ -135,13 +137,13 @@ public class EventsActivity extends Fragment {
         eventsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                List<Trip> trips = new ArrayList<Trip>();
+                List<Event> events = new ArrayList<Event>();
                 for (DataSnapshot trip : dataSnapshot.getChildren()) {
-                    Trip t = trip.getValue(Trip.class);
-                    t.ID = trip.getKey();
-                    trips.add(t);
+                    Event e = trip.getValue(Event.class);
+                    e.Host = trip.getKey();
+                    events.add(e);
                 }
-                ListAdapter listAdp = new CustomAdapter(getActivity(), trips, R.layout.event_list_single_view);
+                ListAdapter listAdp = new EventListAdapter(getActivity(), events, R.layout.event_list_single_view);
                 listView.setAdapter(listAdp);
             }
 

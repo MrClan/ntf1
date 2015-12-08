@@ -1,6 +1,7 @@
 package layout;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,9 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import com.apptivators.ntcore.CityListActivity;
+import com.apptivators.ntcore.EventListingPage;
+import com.apptivators.ntcore.EventsActivity;
 import com.apptivators.ntcore.R;
 import com.apptivators.ntcore.Utils.SquareImageAdapter;
 
@@ -18,8 +22,7 @@ import com.apptivators.ntcore.Utils.SquareImageAdapter;
  * Created on 12/7/2015
  * By : $(USER)<suchan211@gmail.com>
  */
-public class FragEvent extends Fragment
-{
+public class FragEvent extends Fragment {
 
     static Class targetActivity = null;
     private int mPage;
@@ -31,6 +34,7 @@ public class FragEvent extends Fragment
         targetActivity = tgtActivity;
         return fragment;
     }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,11 +53,18 @@ public class FragEvent extends Fragment
                 Toast.makeText(curActivity, "" + position,
                         Toast.LENGTH_SHORT).show();
 
-                if (targetActivity != null) {
-                    startActivity(new Intent(view.getContext(), targetActivity));
-                }
+                Context ctx = view.getContext();
+                // load romantic city list
 
-                // start target activity on click
+                Intent i1 = new Intent(ctx, EventListingPage.class);
+                i1.putExtra("dataType", "Events");
+                ctx.startActivity(i1);
+
+                /*if (targetActivity != null) {
+                    startActivity(new Intent(view.getContext(), targetActivity));
+                }*/
+
+
             }
         });
 
