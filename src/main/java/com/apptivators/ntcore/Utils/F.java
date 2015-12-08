@@ -37,6 +37,8 @@ public class F {
     public final static String casualCitiesNode = "/CasualCities";
     public final static String exploreCitiesNode = "/ExploreCities";
     public final static String mountainCitiesNode = "/MountainCities";
+    public final static String packagesNode = "/Packages";
+
 
 
     public final static Map<TripType, String> NodeMaps = new HashMap<TripType, String>() {

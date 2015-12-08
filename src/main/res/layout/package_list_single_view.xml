@@ -29,7 +29,7 @@
             android:orientation="vertical"
             android:layout_weight="90">
             <TextView
-                android:id="@+id/lblEventTitle"
+                android:id="@+id/lblPackageTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
@@ -37,7 +37,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#ffffff" />
             <TextView
-                android:id="@+id/lblEventHost"
+                android:id="@+id/lblPackageHost"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
@@ -47,7 +47,7 @@
                 android:textColor="#ffffff" />
 
             <TextView
-                android:id="@+id/lblEventDuration"
+                android:id="@+id/lblPackageDuration"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
@@ -57,7 +57,7 @@
                 android:textColor="#ffffff" />
 
             <TextView
-                android:id="@+id/lblEventCost"
+                android:id="@+id/lblPackageCost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"

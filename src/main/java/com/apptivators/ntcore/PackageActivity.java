@@ -5,11 +5,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -21,10 +18,8 @@ import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
-import com.apptivators.ntcore.Adapters.CityListAdapter;
-import com.apptivators.ntcore.Models.City;
-import com.apptivators.ntcore.Models.Trip;
-import com.apptivators.ntcore.Models.TripType;
+import com.apptivators.ntcore.Adapters.PackageListAdapter;
+import com.apptivators.ntcore.Models.NepTripPackage;
 import com.apptivators.ntcore.Utils.F;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -51,6 +46,18 @@ public class PackageActivity extends Fragment {
         //GET VIEW CACHED VARIABLES
         view = inflater.inflate(R.layout.package_list_main_view, container, false);
         listView = (ListView) view.findViewById(R.id.listPackageView);
+
+        listView.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        String food = String.valueOf(parent.getItemAtPosition(position));
+                        Toast.makeText(getActivity(), food, Toast.LENGTH_LONG).show();
+                        Intent i = new Intent(getActivity(), PackageDetailActivity.class);
+                        startActivity(i);
+                    }
+                }
+        );
         String mTitle = getArguments().getString("title");
         dataType = getArguments().getString("dataType");
 
@@ -64,7 +71,7 @@ public class PackageActivity extends Fragment {
         setupFilterToolbar();
 
         //LOAD TEMP DATA
-        LoadListData();
+        LoadPackageList();
         return view;
     }
 
@@ -88,9 +95,27 @@ public class PackageActivity extends Fragment {
         citySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getActivity(),
-                        "you selected: " + cityCategory[position],
-                        Toast.LENGTH_SHORT).show();
+                if(position != 0) {
+
+                    String selectedCity = cityCategory[position].toLowerCase();
+                    Toast.makeText(getActivity(),
+                            "Searching for packages in : " + selectedCity,
+                            Toast.LENGTH_SHORT).show();
+                    if (packages.size() > 0) {
+                        ArrayList<NepTripPackage> searchResults = new ArrayList<NepTripPackage>();
+                        for (NepTripPackage p : packages) {
+                            if (p.getCity().toLowerCase().equalsIgnoreCase(selectedCity))
+                                searchResults.add(p);
+                        }
+                        PackageListAdapter listAdp = new PackageListAdapter(getActivity(), searchResults, R.layout.package_list_single_view);
+                        listView.setAdapter(listAdp);
+                    }
+                }
+                else
+                {
+                    PackageListAdapter listAdp = new PackageListAdapter(getActivity(), packages, R.layout.package_list_single_view);
+                    listView.setAdapter(listAdp);
+                }
             }
 
             @Override
@@ -102,8 +127,9 @@ public class PackageActivity extends Fragment {
         dateSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
                 Toast.makeText(getActivity(),
-                        "you selected: " + dateCategory[position],
+                        "Selected date : " + dateCategory[position],
                         Toast.LENGTH_SHORT).show();
             }
 
@@ -137,24 +163,30 @@ public class PackageActivity extends Fragment {
         );
     }
 
-    private void LoadListData()
+    static List<NepTripPackage> packages = new ArrayList<NepTripPackage>();
+
+    private void LoadPackageList()
     {
+        Firebase packagesRef = new Firebase(F.rootNode + F.packagesNode);
+        packagesRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
 
-        String[] events = new String[] {"Featured Event I ","Featured Event II ","Featured Event III ","Featured Event IV ","Featured Event V ","Featured Event VI ","Featured Event VII ","Featured Event VIII ","Featured Event IX ","Featured Event X"};
-
-        ListAdapter listAdp = new TempCustomeAdapter(getActivity(), events,R.layout.package_list_single_view);
-        listView.setAdapter(listAdp);
-        listView.setOnItemClickListener(
-                new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        String food = String.valueOf(parent.getItemAtPosition(position));
-                        Toast.makeText(getActivity(), food, Toast.LENGTH_LONG).show();
-                        Intent i = new Intent(getActivity(), PackageDetailActivity.class);
-                        startActivity(i);
-                    }
+                for (DataSnapshot pck : dataSnapshot.getChildren()) {
+                    NepTripPackage p = pck.getValue(NepTripPackage.class);
+                    p.Host = pck.getKey();
+                    packages.add(p);
                 }
-        );
+
+                PackageListAdapter listAdp = new PackageListAdapter(getActivity(), packages, R.layout.package_list_single_view);
+                listView.setAdapter(listAdp);
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
     }
 
 }
