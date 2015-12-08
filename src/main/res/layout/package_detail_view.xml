@@ -43,7 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Morning Walk At Thamel"
+                android:text="Sauraha Package Tours (4D/3N)"
                 android:id="@+id/lblEventTitle"
                 android:layout_marginLeft="10dp"
                 android:textColor="#ffffff"

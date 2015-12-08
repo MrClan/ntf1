@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minHeight="25px"
+    android:minWidth="25px"
+    android:orientation="vertical"
+    android:padding="5dp"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="25px"
+        android:minWidth="25px"
+        android:orientation="horizontal"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="#2a000000">
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="25px"
+            android:minWidth="25px"
+            android:orientation="vertical"
+            android:layout_weight="90">
+            <TextView
+                android:id="@+id/lblCalendarTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:text="Day 1"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#27263a"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/lblCalendarDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:text="Kathmandu to Sauraha by tourist bus at 7:00 PM. Village tour to observe ethinc Tharu community at 4:00 PM. Observation of Cultural Dance in evening and overnight stay at hotel"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="12sp"
+                android:textColor="#21242a"
+                android:layout_marginBottom="5dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
