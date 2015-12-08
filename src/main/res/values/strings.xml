@@ -39,7 +39,7 @@
 
     <!-- Category -->
     <string-array name="category">
-        <item>Choose City</item>
+        <item>All Cities</item>
         <item>Kathmandu</item>
         <item>Bhaktapur</item>
         <item>Lalitpur</item>
