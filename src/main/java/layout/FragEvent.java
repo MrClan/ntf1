@@ -13,6 +13,7 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 import com.apptivators.ntcore.CityListActivity;
+import com.apptivators.ntcore.ImageAdapter;
 import com.apptivators.ntcore.ListingPage;
 import com.apptivators.ntcore.Models.TripType;
 import com.apptivators.ntcore.R;
@@ -25,7 +26,25 @@ import com.apptivators.ntcore.Utils.SquareImageAdapter;
 public class FragEvent extends Fragment {
 
     private int mPage;
+    private Integer[] mThumbIdsEvent = {
+            R.drawable.img_social,
+            R.drawable.img_festival,
+            R.drawable.img_exploring,
+            R.drawable.img_hiking,
+            R.drawable.img_casual,
+            R.drawable.img_mountaineering,
+            R.drawable.img_adventure,
+    };
 
+    private String[] mThumbIdsEventNames = {
+            "Social",
+            "Festival",
+            "Exploring",
+            "Hiking",
+            "Casual",
+            "Mountaineering",
+            "Adventure",
+    };
     public static FragEvent newInstance() {
         Bundle args = new Bundle();
         FragEvent fragment = new FragEvent();
@@ -43,7 +62,7 @@ public class FragEvent extends Fragment {
         final View view = inflater.inflate(R.layout.frag_event, container, false);
         final Activity curActivity = getActivity();
         GridView gridview = (GridView) view.findViewById(R.id.gvEvent);
-        gridview.setAdapter(new SquareImageAdapter(curActivity, SquareImageAdapter.ItemType.DESTINATION));
+        gridview.setAdapter(new ImageAdapter(curActivity, 1, mThumbIdsEvent, mThumbIdsEventNames ));
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,

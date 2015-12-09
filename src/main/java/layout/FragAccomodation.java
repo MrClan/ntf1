@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import com.apptivators.ntcore.ImageAdapter;
 import com.apptivators.ntcore.R;
 import com.apptivators.ntcore.Utils.SquareImageAdapter;
 
@@ -19,7 +20,25 @@ import com.apptivators.ntcore.Utils.SquareImageAdapter;
  */
 public class FragAccomodation extends Fragment
 {
+    private Integer[] mThumbIdsTransportation =
+            {
+                    R.drawable.img_menu_acomodation_fivestarhotel,
+                    R.drawable.img_menu_acomodation_premiumhotel,
+                    R.drawable.img_menu_acomodation_villa,
+                    R.drawable.img_menu_acomodation_budgethotel,
+                    R.drawable.img_menu_acomodation_homestay,
+                    R.drawable.img_menu_acomodation_motel
+            };
 
+    private String[] mThumbIdsTransportationNames =
+            {
+                    "5 Star Hotel",
+                    "Premium Hotel",
+                    "Villa",
+                    "Budget Hotel",
+                    "Homestay",
+                    "Motel"
+            };
     static Class targetActivity = null;
     final static SquareImageAdapter.ItemType ITEM_TYPE = SquareImageAdapter.ItemType.ACCOMODATION;
     private int mPage;
@@ -41,7 +60,7 @@ public class FragAccomodation extends Fragment
         final View view = inflater.inflate(R.layout.frag_accomodation, container, false);
         final Activity curActivity = getActivity();
         GridView gridview = (GridView) view.findViewById(R.id.gvAccomodation);
-        gridview.setAdapter(new SquareImageAdapter(curActivity, ITEM_TYPE));
+        gridview.setAdapter(new ImageAdapter(curActivity, 1, mThumbIdsTransportation, mThumbIdsTransportationNames ));
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,

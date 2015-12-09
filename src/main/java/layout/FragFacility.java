@@ -66,21 +66,6 @@ public class FragFacility extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.frag_facility, container, false);
         final Activity curActivity = getActivity();
-        GridView gridview = (GridView) view.findViewById(R.id.gvFacility);
-        gridview.setAdapter(new ImageAdapter(curActivity,1,mThumbIds,mThumbInfo));
-
-        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View v,
-                                    int position, long id) {
-                if (targetActivity != null) {
-                    startActivity(new Intent(view.getContext(), targetActivity));
-                }
-
-                // start target activity on click
-            }
-        });
-        
-
         return view;
     }
 
