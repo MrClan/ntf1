@@ -1,6 +1,7 @@
 package com.apptivators.ntcore;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,7 +15,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.Toast;
@@ -34,7 +34,7 @@ import java.util.List;
 
 public class PackageActivity extends Fragment {
     ListView listView;
-    ProgressBar progressBar;
+    ProgressDialog progress;
     String dataType;
     View view;
     Spinner sCity;
@@ -68,6 +68,8 @@ public class PackageActivity extends Fragment {
         if(dataType== null)
             dataType="";
 
+        progress = ProgressDialog.show(getActivity(), "Loading","please wait", true);
+
         //SETUP THE TOOLBAR
         setupToolbar();
 
@@ -99,6 +101,8 @@ public class PackageActivity extends Fragment {
                         PackageListAdapter listAdp = new PackageListAdapter(act, packages, R.layout.package_list_single_view);
                         listView.setAdapter(listAdp);
                     }
+
+                    progress.dismiss();
                 }
 
                 @Override

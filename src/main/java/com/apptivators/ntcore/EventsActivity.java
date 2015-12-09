@@ -1,5 +1,6 @@
 package com.apptivators.ntcore;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -36,8 +37,8 @@ import java.util.List;
 
 public class EventsActivity extends Fragment {
     ListView listView;
-    ProgressBar progressBar;
     String dataType;
+    ProgressDialog progress;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -94,6 +95,12 @@ public class EventsActivity extends Fragment {
                                                     }
                                                 }
         );
+
+
+        progress = ProgressDialog.show(getActivity(), "Loading",
+                "please wait", true);
+
+
         return view;
     }
 
@@ -128,6 +135,7 @@ public class EventsActivity extends Fragment {
                 }
                 ListAdapter listAdp = new CityListAdapter(getActivity(), cities, R.layout.event_list_single_view);
                 listView.setAdapter(listAdp);
+                progress.dismiss();
             }
 
             @Override
@@ -151,6 +159,7 @@ public class EventsActivity extends Fragment {
                 }
                 ListAdapter listAdp = new EventListAdapter(getActivity(), events, R.layout.event_list_single_view);
                 listView.setAdapter(listAdp);
+                progress.dismiss();
             }
 
             @Override
