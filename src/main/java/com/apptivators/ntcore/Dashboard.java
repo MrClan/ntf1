@@ -43,7 +43,7 @@ public class Dashboard extends Fragment {
 
         PagerSlidingTabStrip tabsStrip = (PagerSlidingTabStrip) view.findViewById(R.id.tabsDashboard);
         tabsStrip.setTextColorResource(R.color.white);
-        tabsStrip.setTextSize(35);
+        tabsStrip.setTextSize(25);
         tabsStrip.setShouldExpand(true);
         tabsStrip.setViewPager(viewPager);
         tabsStrip.setShouldExpand(false);
