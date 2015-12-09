@@ -77,7 +77,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Book"
+                android:text="Details"
                 android:focusableInTouchMode="false"
                 android:id="@+id/button"
                 android:background="#60b3d1"

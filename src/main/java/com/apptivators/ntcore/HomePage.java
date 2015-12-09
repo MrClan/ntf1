@@ -119,16 +119,28 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         }
         else if(id==R.id.nav_login)
         {
-            fragment = new LoginPage();
-            Bundle args = new Bundle();
-            fragment.setArguments(args);
-            args.putString("title", "Preferences");
+            // Show an alert before logging out
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            alert.setMessage("Log out of " + U.GetLocalUser() + "?");
+            alert.setCancelable(true);
+            alert.setPositiveButton("Logout", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // Clear local user value, and redirect to setup page
+                    U.ClearLocalUser();
+                    Intent i = new Intent(getBaseContext(), UsersetupActivity.class);
+                    startActivity(i);
+                    finish();
+                }
+            });
+            alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
 
-            // Insert the fragment by replacing any existing fragment
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.frameLayout, fragment)
-                    .commit();
+                }
+            });
+            alert.show();
+            proceed = false;
         }
         else if(id== R.id.nav_menu_dashboard) {
         }
@@ -149,28 +161,6 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 //            startActivity(i);*/
 //            proceed = false;
 //        }else if (id == R.id.nav_login) {
-//            // Show an alert before logging out
-//            AlertDialog.Builder alert = new AlertDialog.Builder(this);
-//            alert.setMessage("Are you sure you want to logout of " + U.GetLocalUser() + "?");
-//            alert.setCancelable(true);
-//            alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialog, int which) {
-//                    // Clear local user value, and redirect to setup page
-//                    U.ClearLocalUser();
-//                    Intent i = new Intent(getBaseContext(), UsersetupActivity.class);
-//                    startActivity(i);
-//                    finish();
-//                }
-//            });
-//            alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialog, int which) {
-//
-//                }
-//            });
-//            alert.show();
-//            proceed = false;
 //        }
 //        else
 //        {

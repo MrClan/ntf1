@@ -11,92 +11,11 @@
         android:layout_width="match_parent"
         android:text="BUY PACKAGE"
         android:id="@+id/btnBuy"
-        android:onClick="BuyPackage"/>
+        android:onClick="BuyPackage"
+        android:background="#d35400"
+        android:textColor="#FFF" />
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="10"
-        android:weightSum="90"
-        android:layout_gravity="center">
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="30"
-            android:background="#eccc2f"
-            android:layout_gravity="center"
-            android:layout_marginRight="5dp">
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Casual"
-                    android:id="@+id/lblPackageType"
-                    android:layout_gravity="center" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="30"
-            android:background="#2fd52f"
-            android:layout_gravity="center"
-            android:layout_marginRight="5dp">
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Deluxe"
-                    android:id="@+id/lblPackageBudgetType"
-                    android:layout_gravity="center" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="30"
-            android:layout_marginRight="5dp"
-            android:background="#cd43dc">
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Rs. 32,000"
-                    android:id="@+id/lblPackageCost"
-                    android:layout_gravity="center" />
-            </LinearLayout>
-        </LinearLayout>
-
-    </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"
