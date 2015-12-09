@@ -30,8 +30,8 @@ public class LoginPage extends Fragment
         TextView txtEmail = (TextView) view.findViewById(R.id.txtEmail);
 
         //SET THE ACTIONBAR TITLE & ICON
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Login");
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Login");
+        //((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         //CHANGE TITLE AND EMAIL FONT
@@ -44,7 +44,7 @@ public class LoginPage extends Fragment
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(getActivity(), "This page is under contruction", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -53,7 +53,7 @@ public class LoginPage extends Fragment
             @Override
             public void onClick(View v)
             {
-
+                Toast.makeText(getActivity(), "This page is under contruction", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -62,7 +62,7 @@ public class LoginPage extends Fragment
             @Override
             public void onClick(View v)
             {
-
+                Toast.makeText(getActivity(), "This page is under contruction", Toast.LENGTH_SHORT).show();
             }
         });
 

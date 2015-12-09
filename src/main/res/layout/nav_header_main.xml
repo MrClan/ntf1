@@ -12,10 +12,10 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:src="@drawable/img_preference_02" />
+        android:src="@drawable/img_preference_01" />
 
     <TextView
         android:id="@+id/txtNavHeaderWelcome"
@@ -29,7 +29,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Your travel companion" />
+        android:text="NepTrip" />
 
 
 </LinearLayout>

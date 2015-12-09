@@ -48,7 +48,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 
         String username = U.GetLocalUser();
         txtNavHeaderWelcome = (TextView) findViewById(R.id.txtNavHeaderWelcome);
-        txtNavHeaderWelcome.setText(txtNavHeaderWelcome.getText() + " @ " + username);
+        txtNavHeaderWelcome.setText("Welcome" + " " + username + " !");
 
 
         //POPULATE THE FIRST PAGE AS FEATURED PAGE
@@ -99,48 +99,17 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(MenuItem item)
+    {
         boolean proceed = true;
         int id = item.getItemId();
         Fragment fragment = null;
         String title = null;
         if (id == R.id.nav_setting) {
             fragment = new Preferences();
-        }
-        else if(id== R.id.nav_menu_dashboard)
-        {
-            /*Intent i = new Intent(getBaseContext(), DashboardTabs.class);
-            startActivity(i);*/
-            proceed = false;
-        }else if (id == R.id.nav_login) {
-            // Show an alert before logging out
-            AlertDialog.Builder alert = new AlertDialog.Builder(this);
-            alert.setMessage("Are you sure you want to logout of " + U.GetLocalUser() + "?");
-            alert.setCancelable(true);
-            alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    // Clear local user value, and redirect to setup page
-                    U.ClearLocalUser();
-                    Intent i = new Intent(getBaseContext(), UsersetupActivity.class);
-                    startActivity(i);
-                    finish();
-                }
-            });
-            alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-
-                }
-            });
-            alert.show();
-            proceed = false;
-        }
-
-        if (proceed) {
             Bundle args = new Bundle();
             fragment.setArguments(args);
-            args.putString("title", title);
+            args.putString("title", "Preferences");
 
             // Insert the fragment by replacing any existing fragment
             FragmentManager fragmentManager = getSupportFragmentManager();
@@ -148,6 +117,77 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
                     .replace(R.id.frameLayout, fragment)
                     .commit();
         }
+        else if(id==R.id.nav_login)
+        {
+            fragment = new LoginPage();
+            Bundle args = new Bundle();
+            fragment.setArguments(args);
+            args.putString("title", "Preferences");
+
+            // Insert the fragment by replacing any existing fragment
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.frameLayout, fragment)
+                    .commit();
+        }
+        else if(id== R.id.nav_menu_dashboard) {
+        }
+        else
+        {
+            Toast.makeText(HomePage.this, "This page is under contruction", Toast.LENGTH_SHORT).show();
+        }
+//        boolean proceed = true;
+//        int id = item.getItemId();
+//        Fragment fragment = null;
+//        String title = null;
+//        if (id == R.id.nav_setting) {
+//            fragment = new Preferences();
+//        }
+//        else if(id== R.id.nav_menu_dashboard)
+//        {
+//            /*Intent i = new Intent(getBaseContext(), DashboardTabs.class);
+//            startActivity(i);*/
+//            proceed = false;
+//        }else if (id == R.id.nav_login) {
+//            // Show an alert before logging out
+//            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+//            alert.setMessage("Are you sure you want to logout of " + U.GetLocalUser() + "?");
+//            alert.setCancelable(true);
+//            alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialog, int which) {
+//                    // Clear local user value, and redirect to setup page
+//                    U.ClearLocalUser();
+//                    Intent i = new Intent(getBaseContext(), UsersetupActivity.class);
+//                    startActivity(i);
+//                    finish();
+//                }
+//            });
+//            alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialog, int which) {
+//
+//                }
+//            });
+//            alert.show();
+//            proceed = false;
+//        }
+//        else
+//        {
+//
+//        }
+//
+//        if (proceed) {
+//            Bundle args = new Bundle();
+//            fragment.setArguments(args);
+//            args.putString("title", title);
+//
+//            // Insert the fragment by replacing any existing fragment
+//            FragmentManager fragmentManager = getSupportFragmentManager();
+//            fragmentManager.beginTransaction()
+//                    .replace(R.id.frameLayout, fragment)
+//                    .commit();
+//        }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
 

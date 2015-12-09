@@ -4,6 +4,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -45,6 +46,12 @@ public class Preferences extends Fragment
         txtPref05.setTypeface(face2);
         txtPref06.setTypeface(face2);
         txtPref07.setTypeface(face2);
+
+
+        final Toolbar advToolbar = (Toolbar) view.findViewById(R.id.my_awesome_toolbar);
+        advToolbar.setTitle("Preferences");
+        advToolbar.setTitleTextColor(R.color.colorPrimaryDark);
+        advToolbar.inflateMenu(R.menu.advance_search);
 
         return view;
     }
