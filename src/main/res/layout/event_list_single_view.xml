@@ -13,9 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_weight="17.20"
-        android:background="@drawable/event_pic_03"
         android:adjustViewBounds="true"
-        android:scaleType="centerCrop"/>
+        android:scaleType="fitCenter"
+        android:src="@drawable/icon_clock" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"

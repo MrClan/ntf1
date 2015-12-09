@@ -17,25 +17,24 @@
         android:minWidth="25px"
         android:orientation="horizontal"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:background="#b13f372f">
+        android:layout_alignParentStart="true">
 
         <LinearLayout
             android:id="@+id/linearLayout3"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:minHeight="25px"
             android:minWidth="25px"
             android:orientation="vertical"
-            android:layout_weight="90">
+            android:layout_weight="80">
             <TextView
                 android:id="@+id/lblPackageTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
                 android:text="Rafting Mela &apos;72"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="#ffffff" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#25779a" />
             <TextView
                 android:id="@+id/lblPackageHost"
                 android:layout_width="match_parent"
@@ -43,8 +42,8 @@
                 android:paddingLeft="10dp"
                 android:text="Abc Travel Tours Pvt. Ltd."
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="10sp"
-                android:textColor="#ffffff" />
+                android:textSize="13sp"
+                android:textColor="#6c6c6c" />
 
             <TextView
                 android:id="@+id/lblPackageDuration"
@@ -53,8 +52,8 @@
                 android:paddingLeft="10dp"
                 android:text="3N/4D"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="10sp"
-                android:textColor="#ffffff" />
+                android:textSize="13sp"
+                android:textColor="#6c6c6c" />
 
             <TextView
                 android:id="@+id/lblPackageCost"
@@ -63,9 +62,30 @@
                 android:paddingLeft="10dp"
                 android:text="Cost: Rs. 34,000/- (Delux package)"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="10sp"
-                android:textColor="#ffffff"
+                android:textSize="13sp"
+                android:textColor="#6c6c6c"
                 android:layout_marginBottom="2dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="20"
+            android:layout_gravity="center">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Book"
+                android:focusableInTouchMode="false"
+                android:id="@+id/button"
+                android:background="#60b3d1"
+                android:focusable="false"
+
+                android:textColor="#e1e1e1"
+                android:layout_gravity="center"
+                android:layout_marginRight="5dp" />
         </LinearLayout>
 
     </LinearLayout>

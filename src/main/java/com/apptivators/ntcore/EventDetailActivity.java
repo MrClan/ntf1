@@ -1,9 +1,13 @@
 package com.apptivators.ntcore;
 
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -55,5 +59,10 @@ public class EventDetailActivity extends AppCompatActivity
         tabsStrip.setShouldExpand(true);
         tabsStrip.setViewPager(viewPager);
         tabsStrip.setShouldExpand(false);
+
+        final Toolbar advToolbar = (Toolbar) findViewById(R.id.my_awesome_toolbar);
+        advToolbar.setTitle("Event Detail");
+        advToolbar.setTitleTextColor(R.color.colorPrimaryDark);
+        advToolbar.inflateMenu(R.menu.advance_search);
     }
 }

@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -39,8 +40,8 @@ public class EventsActivity extends Fragment {
     String dataType;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    {
         //GET VIEW CACHED VARIABLES
         View view = inflater.inflate(R.layout.event_list_main_view, container, false);
         listView = (ListView) view.findViewById(R.id.listViewFood);
@@ -54,6 +55,8 @@ public class EventsActivity extends Fragment {
         //SET THE ACTIONBAR TITLE & ICON
         //((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(mTitle);
         //((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
 
         //TODO: TAKES ABOUT 3-4 SECONDS, SO A PROGRESSBAR OR PROGRESSDIALOG WOULD BE NICE HERE
         LoadData();

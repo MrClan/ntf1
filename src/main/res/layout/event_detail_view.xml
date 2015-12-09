@@ -8,7 +8,13 @@
     android:background="#dbdbdb"
     android:weightSum="100">
 
-    
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_awesome_toolbar"
+        android:layout_height="56dp"
+        android:layout_width="match_parent"
+        android:minHeight="?attr/actionBarSize"
+        android:titleTextAppearance="@color/white"
+        android:background="?attr/colorPrimary"></android.support.v7.widget.Toolbar>
     <RelativeLayout
         android:id="@+id/layoutTop"
         android:layout_width="match_parent"
@@ -19,9 +25,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/iViewEventCoverPic"
-            android:background="@drawable/detail_coverpic"
             android:adjustViewBounds="true"
-            android:scaleType="centerCrop"/>
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_clock" />
 
         <LinearLayout
             android:orientation="vertical"

@@ -13,6 +13,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
 import android.widget.TextView;
 
 import com.apptivators.ntcore.Utils.U;
@@ -30,7 +31,8 @@ public class ListingPage extends AppCompatActivity implements NavigationView.OnN
     String viewType;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_listing_page);
         //getSupportActionBar().hide();

@@ -116,16 +116,16 @@ public class PackageActivity extends Fragment {
 
 
         SpinnerAdapter spinnerCityAdapter = ArrayAdapter.createFromResource(getActivity().getApplicationContext(), R.array.category, R.layout.spinner_dropdown_item);
-        SpinnerAdapter spinnerDateAdapter = ArrayAdapter.createFromResource(getActivity().getApplicationContext(), R.array.date, R.layout.spinner_dropdown_item);
+        //SpinnerAdapter spinnerDateAdapter = ArrayAdapter.createFromResource(getActivity().getApplicationContext(), R.array.date, R.layout.spinner_dropdown_item);
 
         Spinner citySpinner = new Spinner(getActivity());
         citySpinner.setAdapter(spinnerCityAdapter);
         toolbar.addView(citySpinner, 0);
 
-        Spinner dateSpinner = new Spinner(getActivity());
-        dateSpinner.setAdapter(spinnerDateAdapter);
-        dateSpinner.setVisibility(View.INVISIBLE);
-        toolbar.addView(dateSpinner, 0);
+//        Spinner dateSpinner = new Spinner(getActivity());
+//        dateSpinner.setAdapter(spinnerDateAdapter);
+//        dateSpinner.setVisibility(View.INVISIBLE);
+//        toolbar.addView(dateSpinner, 0);
 
         citySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -154,24 +154,24 @@ public class PackageActivity extends Fragment {
             }
         });
 
-        dateSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
+//        dateSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//
+//            }
+//        });
     }
 
     private void setupToolbar()
     {
         final Toolbar advToolbar = (Toolbar) view.findViewById(R.id.my_awesome_toolbar);
         advToolbar.setNavigationIcon(R.drawable.nav_drawer);
-        advToolbar.setTitle("Events");
+        advToolbar.setTitle("Packages Available");
         advToolbar.setTitleTextColor(R.color.colorPrimaryDark);
         advToolbar.inflateMenu(R.menu.advance_search);
 
