@@ -1,196 +1,137 @@
 package com.apptivators.ntcore;
 
-import android.app.AlertDialog;
-import android.app.Fragment;
-import android.content.DialogInterface;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
+import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.apptivators.ntcore.Models.Trip;
-import com.apptivators.ntcore.Utils.F;
+import com.apptivators.ntcore.Models.NepTripPackage;
 import com.apptivators.ntcore.Utils.U;
-import com.firebase.client.DataSnapshot;
-import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.firebase.client.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
 /**
  * Created on 12/7/2015
  * by MrClan<justmepratik@gmail.com>
  */
 
-public class CityListActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class CityListActivity extends AppCompatActivity
+{
 
-    TextView txtNavHeaderWelcome;
-    MenuItem nav_login;
+    private ListView listCityView;
+    private ArrayAdapter<String> listAdapter;
+    SearchView mSearchView;
+    String mSearchString;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home_page);
-        U.c = this;
+        setContentView(R.layout.city_list_main_view);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, null, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
+        listCityView = (ListView) findViewById(R.id.lvCity);
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        //CREATE AND POPULATE A LIST OF CITIES
+        String[] cities = {"Kathmandu","Bhaktapur","Lalitpur","Janakpur","Mustang","Manang","Gorkha","Pokhara","Dharan","Bhutwal","Bhaktapur","Lalitpur","Janakpur","Mustang","Manang","Gorkha","Pokhara","Dharan","Bhutwal"};
 
-        String username = U.GetLocalUser();
-        txtNavHeaderWelcome = (TextView) findViewById(R.id.txtNavHeaderWelcome);
-        txtNavHeaderWelcome.setText(txtNavHeaderWelcome.getText() + " @ " + username);
+        ArrayList<String> cityList = new ArrayList<String>();
+        cityList.addAll(Arrays.asList(cities));
 
+        //CREATE ARRAY ADAPTER USING THE CITY ARRAY
+        listAdapter = new ArrayAdapter<String>(this, R.layout.simplerow, cityList);
+        listCityView.setAdapter(listAdapter);
+        listCityView.setTextFilterEnabled(true);
 
-        String dataType = this.getIntent().getStringExtra("dataType"); // Read extras for dataType, and pass it to the child fragment
+        //SETUP THE TOOLBAR
+        setupToolbar();
 
-        //POPULATE THE FIRST PAGE AS FEATURED PAGE
-        android.support.v4.app.Fragment fragment = new EventsActivity();
-        Bundle args = new Bundle();
-        args.putString("title", "Applicable Cities");
-        args.putString("dataType", dataType);
-        fragment.setArguments(args);
+        //ON CITY LIST CLICKED
+        listCityView.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent i = new Intent(CityListActivity.this, ListingPage.class);
+                        i.putExtra("viewType", "Packages");
+                        i.putExtra("dataType", "SocialEvents");
+                        startActivity(i);
+                    }
+                }
+        );
+    }
 
-        // Insert the fragment by replacing any existing fragment
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, fragment)
-                .commit();
+    public boolean onSupportNavigateUp()
+    {
+        onBackPressed();
+        return true;
+    }
+
+    private void setupToolbar()
+    {
+        final Toolbar advToolbar = (Toolbar) findViewById(R.id.my_awesome_toolbar);
+        advToolbar.setTitle("Package Cities");
+        advToolbar.setTitleTextColor(R.color.colorPrimaryDark);
+
+        setSupportActionBar(advToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
 
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
-
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        //getMenuInflater().inflate(R.menu.main,menu);
-        return true;
-    }
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.advance_search, menu);
 
+        MenuItem searchItem = menu.findItem(R.id.action_searchAdv);
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        SearchManager searchManager = (SearchManager) CityListActivity.this.getSystemService(Context.SEARCH_SERVICE);
+        mSearchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.action_searchAdv));
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        SearchView searchView = null;
+        if (searchItem != null) {
+            searchView = (SearchView) searchItem.getActionView();
+        }
+        if (searchView != null) {
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(CityListActivity.this.getComponentName()));
         }
 
-        return super.onOptionsItemSelected(item);
-    }
-
-
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        boolean proceed = true;
-        int id = item.getItemId();
-        android.support.v4.app.Fragment fragment = null;
-        String title = null;
-        if (id == R.id.nav_menu_review) {
-            fragment = new EventsActivity();
-            title = "Featured Events";
-        } else if (id == R.id.nav_menu_review) {
-            fragment = new EventsActivity();
-            title = "Adventure Events";
-        } else if (id == R.id.nav_menu_review) {
-            fragment = new EventsActivity();
-            title = "Casual Events";
-        } else if (id == R.id.nav_menu_review) {
-            fragment = new EventsActivity();
-            title = "Exploring Events";
-        } else if (id == R.id.nav_menu_review) {
-            fragment = new EventsActivity();
-            title = "Hiking Events";
-        } else if (id == R.id.nav_menu_review) {
-            fragment = new EventsActivity();
-            Bundle args = new Bundle();
-            args.putString("title", "Mountaineering Events");
-        } else if (id == R.id.nav_menu_review) {
-            fragment = new EventsActivity();
-            title = "Romantic Events";
-        } else if (id == R.id.nav_setting) {
-            fragment = new Preferences();
-        }
-        else if(id== R.id.nav_menu_dashboard)
+        SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener()
         {
-            /*Intent i = new Intent(getBaseContext(), DashboardTabs.class);
-            startActivity(i);*/
-            proceed = false;
-        }else if (id == R.id.nav_login) {
-            // Show an alert before logging out
-            AlertDialog.Builder alert = new AlertDialog.Builder(this);
-            alert.setMessage("Are you sure you want to logout of " + U.GetLocalUser() + "?");
-            alert.setCancelable(true);
-            alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    // Clear local user value, and redirect to setup page
-                    U.ClearLocalUser();
-                    Intent i = new Intent(getBaseContext(), UsersetupActivity.class);
-                    startActivity(i);
-                    finish();
+            public boolean onQueryTextChange(String newText)
+            {
+                mSearchString = newText;
+                if (TextUtils.isEmpty(mSearchString)) {
+                    listCityView.clearTextFilter();
+                } else {
+                    listCityView.setFilterText(mSearchString.toString());
                 }
-            });
-            alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
+                return true;
+            }
 
-                }
-            });
-            alert.show();
-            proceed = false;
-        }
+            public boolean onQueryTextSubmit(String query)
+            {
+                mSearchString = query;
+                return true;
+            }
+        };
+        mSearchView.setOnQueryTextListener(queryTextListener);
 
-        if (proceed) {
-            Bundle args = new Bundle();
-            fragment.setArguments(args);
-            args.putString("title", title);
-
-            // Insert the fragment by replacing any existing fragment
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.frameLayout, fragment)
-                    .commit();
-
-        }
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-
-        return true;
+        return super.onCreateOptionsMenu(menu);
     }
 }

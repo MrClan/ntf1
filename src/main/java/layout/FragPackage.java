@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import com.apptivators.ntcore.CityListActivity;
 import com.apptivators.ntcore.ImageAdapter;
 import com.apptivators.ntcore.Models.TripType;
 import com.apptivators.ntcore.ListingPage;
@@ -79,7 +80,7 @@ public class FragPackage extends Fragment
     private void OnMenuButtonClicked(int position)
     {
         Activity ctx = getActivity();
-        Intent i = new Intent(ctx, ListingPage.class);
+        Intent i = new Intent(ctx, CityListActivity.class);
         switch (position)
         {
             case 0:
