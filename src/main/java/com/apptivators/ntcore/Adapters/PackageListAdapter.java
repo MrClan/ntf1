@@ -37,12 +37,10 @@ public class PackageListAdapter extends ArrayAdapter<NepTripPackage>{
         NepTripPackage pck = getItem(position);
         TextView tvTitle = (TextView) view.findViewById(R.id.lblPackageTitle);
         TextView tvHost = (TextView) view.findViewById(R.id.lblPackageHost);
-        TextView tvCost = (TextView) view.findViewById(R.id.lblPackageCost);
         TextView tvDuration = (TextView) view.findViewById(R.id.lblPackageDuration);
 
         tvTitle.setText(pck.getTitle());
         tvHost.setText(pck.Host);
-        tvCost.setText(pck.getCost());
         tvDuration.setText(pck.getDuration());
 
 

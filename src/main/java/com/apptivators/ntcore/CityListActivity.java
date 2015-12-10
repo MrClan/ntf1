@@ -49,7 +49,7 @@ public class CityListActivity extends AppCompatActivity
         listCityView = (ListView) findViewById(R.id.lvCity);
 
         //CREATE AND POPULATE A LIST OF CITIES
-        String[] cities = {"Kathmandu","Bhaktapur","Lalitpur","Janakpur","Mustang","Manang","Gorkha","Pokhara","Dharan","Bhutwal","Bhaktapur","Lalitpur","Janakpur","Mustang","Manang","Gorkha","Pokhara","Dharan","Bhutwal"};
+        String[] cities = {"All City","Kathmandu","Bhaktapur","Lalitpur","Janakpur","Mustang","Manang","Gorkha","Pokhara","Dharan","Bhutwal","Bhaktapur","Lalitpur","Janakpur","Mustang","Manang","Gorkha","Pokhara","Dharan","Bhutwal"};
 
         ArrayList<String> cityList = new ArrayList<String>();
         cityList.addAll(Arrays.asList(cities));
