@@ -16,6 +16,24 @@
         android:titleTextAppearance="@color/white"
         android:background="?attr/colorPrimary"></android.support.v7.widget.Toolbar>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:background="@color/backgroundDark"
+        android:layout_gravity="center">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Package > Adventure > Kathmandu "
+            android:textColor="#ffffff"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/colorPrimary" />
+
     <RelativeLayout
         android:id="@+id/layoutTop"
         android:layout_width="match_parent"

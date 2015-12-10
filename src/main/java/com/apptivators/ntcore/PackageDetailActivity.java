@@ -45,12 +45,9 @@ public class PackageDetailActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         U.c = this;
 
-        //getSupportActionBar().setTitle("Event Details");
-        //getSupportActionBar().setHomeButtonEnabled(true);
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //toolbar.setTitle("Package Detail");
         setContentView(R.layout.package_detail_view);
+
+        //SETUP TOOLBAR
         setupToolbar();
 
 
@@ -101,6 +98,15 @@ public class PackageDetailActivity extends AppCompatActivity
         final Toolbar advToolbar = (Toolbar) findViewById(R.id.my_awesome_toolbar);
         advToolbar.setTitle("Package Details");
         advToolbar.setTitleTextColor(R.color.colorPrimaryDark);
-        advToolbar.inflateMenu(R.menu.advance_search);
+
+        setSupportActionBar(advToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+    }
+
+    public boolean onSupportNavigateUp()
+    {
+        onBackPressed();
+        return true;
     }
 }
