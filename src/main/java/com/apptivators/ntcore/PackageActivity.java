@@ -74,7 +74,7 @@ public class PackageActivity extends Fragment {
         setupToolbar();
 
         //SETUP THE FILTER TOOLBAR
-        setupFilterToolbar();
+        //setupFilterToolbar();
 
         LoadPackageList();
         return view;
@@ -175,7 +175,7 @@ public class PackageActivity extends Fragment {
     {
         final Toolbar advToolbar = (Toolbar) view.findViewById(R.id.my_awesome_toolbar);
         advToolbar.setNavigationIcon(R.drawable.nav_drawer);
-        advToolbar.setTitle("Packages Available");
+        advToolbar.setTitle("Packages");
         advToolbar.setTitleTextColor(R.color.colorPrimaryDark);
         advToolbar.inflateMenu(R.menu.advance_search);
 
