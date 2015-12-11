@@ -1,33 +1,32 @@
 package com.apptivators.ntcore;
 
-import android.content.Intent;
+import android.animation.Animator;
+import android.animation.AnimatorInflater;
 import android.os.Handler;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 
-import com.apptivators.ntcore.Utils.F;
 import com.apptivators.ntcore.Utils.U;
-import com.firebase.client.Firebase;
 
 
 public class MainPage extends AppCompatActivity {
 
     // Splash screen timer
     private static int pauseDuration = 2400;
-
+    private ImageView imgIcon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_page);
+        imgIcon = (ImageView) findViewById(R.id.imgIcon);
         //getSupportActionBar().hide();
+
+        alphaAnimation();
 
         U.Intialize(this);
         new Handler().postDelayed(
@@ -39,6 +38,13 @@ public class MainPage extends AppCompatActivity {
                 }
                 , pauseDuration);
 
+    }
+
+    private void alphaAnimation()
+    {
+        Animator anim = AnimatorInflater.loadAnimator(this, R.animator.alpha);
+        anim.setTarget(imgIcon);
+        anim.start();
     }
 
     public void onClick(View v)
